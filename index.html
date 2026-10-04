@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Kickoff Call — Arketa</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #111111;
+  --dark: #1A1A1A;
+  --gray-900: #222222;
+  --gray-700: #555555;
+  --gray-500: #888888;
+  --gray-300: #CCCCCC;
+  --gray-200: #E5E5E5;
+  --gray-100: #F3F3F3;
+  --white: #FFFFFF;
+  --bg: #F8F8F8;
+  --green: #22C55E;
+  --red: #EF4444;
+  --amber: #F59E0B;
+  --amber-light: #FEF3C7;
+  --amber-dark: #92400E;
+  --emerald: #059669;
+  --emerald-light: #D1FAE5;
+  --sapphire: #0F52BA;
+  --sapphire-light: #DBEAFE;
+  --amethyst: #9966CC;
+  --amethyst-light: #F3E8FF;
+  --gem-gradient: linear-gradient(90deg, var(--emerald), var(--sapphire), var(--amethyst));
+  --radius: 16px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.v2-topbar { height: 5px; background: var(--gem-gradient); }
+
+.header {
+  background: var(--black);
+  color: var(--white);
+  padding: 40px 24px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(5,150,105,0.25), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(15,82,186,0.25), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(153,102,204,0.2), transparent 45%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 32px;
+  background: var(--bg);
+  border-radius: 32px 32px 0 0;
+}
+.header-eyebrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+.header h1 { position: relative; font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+.header p { position: relative; font-size: 1rem; opacity: 0.6; max-width: 460px; margin: 0 auto; }
+.logo { position: relative; display: block; height: 30px; width: auto; margin: 0 auto 20px; opacity: 0.95; filter: invert(1); }
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: -20px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 28px;
+}
+.nav-bar-inner {
+  display: inline-flex;
+  gap: 4px;
+  background: var(--white);
+  padding: 5px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-hover);
+}
+.nav-tab {
+  padding: 10px 22px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-tab.active { color: var(--white); background: var(--black); }
+.nav-tab:hover:not(.active) { color: var(--gray-700); background: var(--gray-100); }
+.nav-tab .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-left: 6px;
+  background: var(--gray-200);
+  color: var(--gray-700);
+}
+.nav-tab.active .badge { background: var(--black); color: var(--white); }
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.section-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+.section-subtitle { font-size: 0.92rem; color: var(--gray-500); margin-bottom: 24px; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 40px; }
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 26px 22px 24px;
+  box-shadow: var(--shadow);
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gray-200);
+}
+.card:hover { border-color: var(--black); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 14px; background: var(--gray-100); }
+.card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.card p { font-size: 0.85rem; color: var(--gray-500); flex: 1; margin-bottom: 14px; }
+.card-tag { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: var(--gray-100); color: var(--gray-700); }
+.card-cta { display: inline-flex; align-items: center; gap: 5px; font-size: 0.85rem; font-weight: 600; color: var(--black); margin-top: 10px; }
+.card-cta svg { transition: transform 0.2s; }
+.card:hover .card-cta svg { transform: translateX(3px); }
+.card-tierA .card-icon { background: var(--emerald-light); }
+.card-tierB .card-icon { background: var(--sapphire-light); }
+.card-tierC .card-icon { background: var(--amethyst-light); }
+.card-tierA::before { background: var(--emerald); }
+.card-tierB::before { background: var(--sapphire); }
+.card-tierC::before { background: var(--amethyst); }
+.card-tierA:hover { border-color: var(--emerald); box-shadow: 0 10px 32px rgba(5,150,105,0.2); }
+.card-tierB:hover { border-color: var(--sapphire); box-shadow: 0 10px 32px rgba(15,82,186,0.2); }
+.card-tierC:hover { border-color: var(--amethyst); box-shadow: 0 10px 32px rgba(153,102,204,0.2); }
+
+.tier-lookup {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 24px 26px;
+  box-shadow: var(--shadow);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.tier-lookup::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gem-gradient);
+}
+.tier-lookup input {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  margin: 14px 0;
+}
+.tier-lookup input:focus { outline: none; border-color: var(--black); box-shadow: 0 0 0 3px rgba(0,0,0,0.06); }
+.migrations-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--amber-light);
+  border: 1.5px solid var(--amber);
+  flex-wrap: wrap;
+}
+.migrations-banner .icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+.migrations-banner .text { flex: 1; min-width: 220px; font-size: 0.9rem; font-weight: 600; color: var(--amber-dark); line-height: 1.5; }
+.migrations-banner .text strong { color: var(--amber-dark); }
+.btn-amber { background: var(--amber); color: var(--white); flex-shrink: 0; }
+.btn-amber:hover { background: var(--amber-dark); }
+.tier-results { display: flex; flex-wrap: wrap; gap: 8px; max-height: 240px; overflow-y: auto; padding: 4px 2px; }
+.tier-results.empty-msg { padding: 0; max-height: none; overflow: visible; }
+.migrations-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 20px;
+  border-radius: 14px;
+  background: var(--amber-light);
+  border: 1.5px solid var(--amber);
+  flex: 1 1 100%;
+}
+.migrations-cta-head { display: flex; align-items: flex-start; gap: 12px; }
+.migrations-cta-icon { font-size: 1.8rem; line-height: 1; }
+.migrations-cta-text strong { display: block; font-size: 1rem; color: var(--amber-dark); margin-bottom: 4px; }
+.migrations-cta-text p { font-size: 0.9rem; color: var(--amber-dark); margin: 0; }
+.migrations-cta-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.tier-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; background: var(--gray-100); color: var(--gray-900); white-space: nowrap; }
+.tier-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.tier-chip.tierA .dot { background: var(--emerald); }
+.tier-chip.tierB .dot { background: var(--sapphire); }
+.tier-chip.tierC .dot { background: var(--amethyst); }
+.tier-chip-btn { border: none; cursor: pointer; font-family: inherit; transition: all 0.15s ease; }
+.tier-chip-btn:hover { transform: translateY(-1px); }
+.tier-chip-btn.tierA:hover { background: var(--emerald-light); }
+.tier-chip-btn.tierB:hover { background: var(--sapphire-light); }
+.tier-chip-btn.tierC:hover { background: var(--amethyst-light); }
+
+.btn-no-migration { margin: 2px 0 4px; }
+
+.tier-resolved {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1.5px solid var(--gray-200);
+}
+.tier-resolved-info { display: flex; flex-direction: column; gap: 6px; }
+.tier-resolved-info p { font-size: 0.88rem; color: var(--gray-700); margin: 0; }
+.tier-resolved.tierA { background: var(--emerald-light); border-color: var(--emerald); }
+.tier-resolved.tierB { background: var(--sapphire-light); border-color: var(--sapphire); }
+.tier-resolved.tierC { background: var(--amethyst-light); border-color: var(--amethyst); }
+.btn-tierA { background: var(--emerald); color: var(--white); }
+.btn-tierA:hover { background: #047857; }
+.btn-tierB { background: var(--sapphire); color: var(--white); }
+.btn-tierB:hover { background: #0d3f8f; }
+.btn-tierC { background: var(--amethyst); color: var(--white); }
+.btn-tierC:hover { background: #7a4fb0; }
+
+.manual-guess { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--gray-300); flex: 1 1 100%; }
+.manual-guess-label { font-size: 0.85rem; font-weight: 600; color: var(--gray-700); margin: 0 0 10px; }
+.manual-guess-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.tooltip-wrap { position: relative; }
+.tooltip-wrap:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: var(--dark);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: normal;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  pointer-events: none;
+  z-index: 30;
+}
+.tooltip-wrap:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 122%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--dark);
+  pointer-events: none;
+  z-index: 30;
+}
+
+.form-tier-display { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-height: 34px; }
+.form-tier-empty { font-size: 0.85rem; color: var(--gray-500); margin: 0; }
+.form-tier-source { font-size: 0.8rem; color: var(--gray-500); }
+
+.note-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 4px 0 22px;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: var(--gray-100);
+  border: 1.5px solid var(--gray-200);
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.55;
+}
+.note-callout .icon { flex-shrink: 0; font-size: 1.05rem; line-height: 1.3; }
+
+.divider { display: flex; align-items: center; gap: 16px; margin: 0 0 32px; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+.divider span { font-size: 0.82rem; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 1px; }
+
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 34px 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gem-gradient);
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; min-width: 0; }
+.form-group { display: flex; flex-direction: column; min-width: 0; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-size: 0.82rem; font-weight: 600; margin-bottom: 5px; color: var(--dark); }
+.form-group label .req { color: var(--red); }
+.form-group label .opt { color: var(--gray-500); font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--white);
+  color: var(--dark);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--black);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+}
+.form-group textarea { resize: vertical; min-height: 72px; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: #B0B0B0; }
+
+.chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-group input[type="radio"], .day-chips input[type="checkbox"] { display: none; }
+.chip-group label, .day-chips label {
+  padding: 9px 16px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 0;
+}
+.chip-group input:checked + label, .day-chips input:checked + label {
+  border-color: var(--black);
+  background: var(--black);
+  color: var(--white);
+  font-weight: 600;
+}
+.day-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 32px;
+  border: none; border-radius: 12px;
+  font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-primary { background: var(--black); color: var(--white); }
+.btn-primary:hover { background: var(--gray-900); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-outline { background: transparent; color: var(--dark); border: 1.5px solid var(--gray-200); }
+.btn-outline:hover { border-color: var(--black); }
+.btn-sm { padding: 7px 16px; font-size: 0.82rem; border-radius: 8px; }
+.btn-done { background: var(--green); color: var(--white); }
+.btn-done:hover { opacity: 0.9; }
+.btn-cancel { background: var(--white); color: var(--red); border: 1.5px solid var(--red); }
+.btn-cancel:hover { background: var(--red); color: var(--white); }
+
+.request-list { display: flex; flex-direction: column; gap: 12px; }
+.request-item {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.2s;
+  border-left: 4px solid var(--gray-200);
+}
+.request-item.tierA { border-left-color: var(--emerald); }
+.request-item.tierB { border-left-color: var(--sapphire); }
+.request-item.tierC { border-left-color: var(--amethyst); }
+.request-item.done { opacity: 0.55; }
+.request-item.cancelled { opacity: 0.55; }
+.request-meta { flex: 1; min-width: 0; }
+.request-meta h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.request-meta p { font-size: 0.92rem; color: var(--gray-900); margin-bottom: 4px; line-height: 1.5; overflow-wrap: anywhere; word-break: break-word; }
+.request-meta p strong { color: var(--dark); }
+.request-meta a { overflow-wrap: anywhere; word-break: break-word; }
+
+.admin-note-block {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--gray-100);
+  border-left: 3px solid var(--sapphire);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--gray-900);
+}
+.admin-note-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sapphire);
+  margin-bottom: 4px;
+}
+.admin-note-label button {
+  background: none;
+  border: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gray-500);
+  cursor: pointer;
+  text-decoration: underline;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.admin-note-label button:hover { color: var(--sapphire); }
+.admin-note-text { white-space: pre-wrap; line-height: 1.5; overflow-wrap: anywhere; word-break: break-word; }
+.admin-note-updated { font-size: 0.72rem; color: var(--gray-500); margin-top: 6px; }
+.btn-add-note {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1.5px dashed var(--gray-300);
+  color: var(--gray-500);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.btn-add-note:hover { border-color: var(--sapphire); color: var(--sapphire); }
+.admin-note-editor { margin-top: 10px; }
+.admin-note-editor textarea {
+  width: 100%;
+  min-height: 64px;
+  padding: 9px 11px;
+  border: 1.5px solid var(--sapphire);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  resize: vertical;
+}
+.admin-note-editor textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(15,82,186,0.12); }
+.admin-note-editor-actions { display: flex; gap: 8px; margin-top: 8px; }
+.request-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+.request-actions-row { display: flex; gap: 8px; }
+.status-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.status-badge.pending { background: #FEF3C7; color: #92400E; }
+.status-badge.scheduled { background: #D1FAE5; color: #065F46; }
+.status-badge.cancelled { background: #FEE2E2; color: #991B1B; }
+.status-badge::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+}
+.status-badge.pending::before { background: var(--amber); }
+.status-badge.scheduled::before { background: var(--green); }
+.status-badge.cancelled::before { background: var(--red); }
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--gray-500);
+}
+.empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; }
+.empty-state p { font-size: 0.92rem; }
+
+.toast {
+  position: fixed; bottom: 32px; left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: var(--dark); color: var(--white);
+  padding: 14px 24px; border-radius: 10px;
+  font-size: 0.92rem; font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  z-index: 1000; opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex; align-items: center; gap: 8px;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.error { background: var(--red); }
+.toast.success { background: var(--green); }
+
+.spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 900;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 34px 28px 28px;
+  width: 400px;
+  max-width: 92vw;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gem-gradient);
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-wide { width: 560px; }
+.modal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.modal .modal-sub { font-size: 0.88rem; color: var(--gray-500); margin-bottom: 20px; }
+.modal .form-group { margin-bottom: 16px; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.modal-check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--gray-100);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+.modal-check-row input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--black); cursor: pointer; flex-shrink: 0; }
+.modal-check-row label { cursor: pointer; }
+
+.hidden { display: none !important; }
+
+.login-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 950;
+  display: flex; align-items: center; justify-content: center;
+}
+.login-box {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 38px 32px 32px;
+  width: 380px;
+  max-width: 92vw;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.login-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gem-gradient);
+}
+.login-box h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+.login-box .login-sub { font-size: 0.88rem; color: var(--gray-500); margin-bottom: 20px; }
+.login-box .form-group { text-align: left; margin-bottom: 14px; }
+.user-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px 4px 8px;
+  background: var(--gray-100); border-radius: 20px;
+  font-size: 0.8rem; font-weight: 600; color: var(--gray-700);
+  cursor: pointer;
+}
+.user-pill:hover { background: var(--gray-200); }
+
+.footer { text-align: center; padding: 28px 24px 26px; font-size: 0.8rem; color: var(--gray-300); }
+.footer::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gem-gradient);
+  margin: 0 auto 16px;
+}
+
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .header h1 { font-size: 1.5rem; }
+  .cards { grid-template-columns: 1fr; }
+  .form-card { padding: 22px 18px; }
+  .nav-bar-inner { gap: 2px; }
+  .nav-tab { padding: 10px 14px; font-size: 0.82rem; }
+  .request-item { flex-direction: column; padding: 18px 16px; }
+  .request-actions { flex-direction: row; align-items: stretch; width: 100%; flex-wrap: wrap; }
+  .request-actions .btn { flex: 1; justify-content: center; }
+  .request-actions-row { flex: 1 1 100%; }
+  .tier-resolved { flex-direction: column; align-items: stretch; }
+  .modal-wide { width: 100%; }
+  .migrations-cta-actions .btn, .manual-guess-actions .btn { flex: 1 1 auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="v2-topbar"></div>
+
+<div class="header">
+<svg class="logo" role="img" aria-label="Arketa" version="1.1" width="315.64001" height="74.013336" viewBox="0 0 315.64001 74.013336" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m 277.539,500.273 c 27.984,0 55.316,-5.16 81.301,-15.343 V 70.1484 C 332.855,59.9727 305.523,54.8125 277.539,54.8125 154.723,54.8125 54.8047,154.73 54.8047,277.539 c 0,122.816 99.9183,222.734 222.7343,222.734 z m 0,54.805 C 124.504,555.078 0,430.574 0,277.539 0,124.504 124.504,0 277.539,0 c 46.594,0 92.707,11.793 133.356,34.1055 l 2.75,1.5117 V 519.461 l -2.75,1.512 c -40.649,22.312 -86.762,34.105 -133.356,34.105" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/><path d="m 530.777,457.629 c -13.578,14.684 -28.816,27.945 -45.285,39.43 l -8.34,5.808 V 55.707 l 8.34,5.8164 c 16.485,11.4961 31.723,24.7657 45.285,39.4336 l 1.411,1.523 v 353.625 l -1.411,1.524" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/><path d="m 873.563,359.035 c -21.426,0 -39.215,-7.59 -53.387,-22.738 -14.172,-15.149 -21.25,-34.559 -21.25,-58.262 0,-23.844 7.195,-43.488 21.629,-58.871 14.422,-15.41 32.168,-23.117 53.254,-23.117 21.761,0 39.8,7.59 54.129,22.738 14.332,15.149 21.511,34.969 21.511,59.516 0,24.019 -7.179,43.488 -21.511,58.375 -14.329,14.887 -32.458,22.359 -54.375,22.359 z m 72.839,56.86 h 69.288 v -276.18 h -69.288 v 29.187 c -13.531,-12.875 -27.089,-22.125 -40.691,-27.789 -13.613,-5.691 -28.356,-8.523 -44.246,-8.523 -35.668,0 -66.508,13.836 -92.543,41.508 -26.035,27.668 -39.039,62.054 -39.039,103.179 0,42.645 12.578,77.614 37.769,104.844 25.188,27.234 55.778,40.863 91.782,40.863 16.566,0 32.121,-3.121 46.66,-9.398 14.535,-6.246 27.961,-15.645 40.308,-28.164 v 30.473" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/><path d="m 1079.91,415.895 h 59.4 v -34.793 c 6.43,13.718 14.97,24.109 25.64,31.23 10.65,7.094 22.33,10.652 35.02,10.652 8.98,0 18.36,-2.363 28.19,-7.089 l -21.59,-59.665 c -8.11,4.059 -14.8,6.102 -20.05,6.102 -10.66,0 -19.67,-6.598 -27.03,-19.82 -7.36,-13.192 -11.05,-39.082 -11.05,-77.668 l 0.26,-13.457 V 139.715 h -68.79 v 276.18" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/><path d="m 1273.32,522.488 h 69.31 V 302.027 l 102.04,113.868 h 87.04 L 1412.74,283.523 1545.93,139.715 h -86.02 L 1342.63,267.004 V 139.715 h -69.31 v 382.773" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/><path d="m 1792.19,312.305 c -4.58,15.41 -13.63,27.933 -27.09,37.593 -13.48,9.633 -29.13,14.45 -46.93,14.45 -19.32,0 -36.25,-5.403 -50.85,-16.231 -9.13,-6.769 -17.63,-18.711 -25.42,-35.812 z m 69.29,-54.555 h -222.62 c 3.21,-19.645 11.8,-35.258 25.75,-46.848 13.98,-11.586 31.78,-17.394 53.44,-17.394 25.89,0 48.16,9.078 66.75,27.172 l 58.41,-27.407 c -14.56,-20.664 -31.99,-35.929 -52.31,-45.824 -20.31,-9.894 -44.42,-14.859 -72.32,-14.859 -43.35,0 -78.64,13.66 -105.87,41.012 -27.26,27.32 -40.86,61.558 -40.86,102.683 0,42.117 13.57,77.113 40.74,104.961 27.15,27.817 61.21,41.738 102.16,41.738 43.49,0 78.87,-13.921 106.1,-41.738 27.26,-27.848 40.87,-64.625 40.87,-110.301 l -0.24,-13.195" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/><path d="m 1936.35,517.672 h 69.29 V 415.895 h 41.13 V 356.23 h -41.13 V 139.715 h -69.29 V 356.23 h -35.55 v 59.665 h 35.55 v 101.777" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/><path d="m 2225.23,359.035 c -21.43,0 -39.23,-7.59 -53.39,-22.738 -14.18,-15.149 -21.25,-58.262 -21.25,-58.262 0,-23.844 7.18,-43.488 21.63,-58.871 14.42,-15.41 32.17,-23.117 53.24,-23.117 21.77,0 39.81,7.59 54.14,22.738 14.34,15.149 21.52,34.969 21.52,59.516 0,24.019 -7.18,43.488 -21.52,58.375 -14.33,14.887 -32.45,22.359 -54.37,22.359 z m 72.82,56.86 h 69.29 v -276.18 h -69.29 v 29.187 c -13.51,-12.875 -27.09,-22.125 -40.69,-27.789 -13.6,-5.691 -28.34,-8.523 -44.25,-8.523 -35.66,0 -66.49,13.836 -92.52,41.508 -26.04,27.668 -39.06,62.054 -39.06,103.179 0,42.645 12.58,77.614 37.77,104.844 25.19,27.234 55.78,40.863 91.8,40.863 16.55,0 32.11,-3.121 46.64,-9.398 14.54,-6.246 27.96,-15.645 40.31,-28.164 v 30.473" style="fill:currentColor;fill-rule:nonzero;stroke:none" transform="matrix(0.13333333,0,0,-0.13333333,0,74.013333)"/></g></g></svg>
+<h1>Studio Kickoff Booking</h1>
+<p>Book a kickoff call or request a custom time for your partner.</p>
+<div id="userPill" class="" style="margin-top: 12px;">
+<span class="user-pill" onclick="logoutUser()" title="Click to switch user">👤 <span id="userPillName">Scott</span> ✕</span>
+</div>
+</div>
+
+<div class="login-overlay" id="loginOverlay" style="display:none;">
+<div class="login-box">
+<h2>Welcome</h2>
+<p class="login-sub">Enter your info to get started.</p>
+<form onsubmit="handleLogin(event)">
+<div class="form-group">
+<label>Your Name <span class="req">*</span></label>
+<input type="text" id="loginName" list="loginNameList" placeholder="Start typing your name..." required autocomplete="off" style="width:100%; padding:11px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.92rem; font-family:inherit;">
+<datalist id="loginNameList"><option value="Abby Purcell"></option><option value="Alexandra"></option><option value="Alexandra Axenbeck"></option><option value="Allison Stahl"></option><option value="Aya Zeplovitch"></option><option value="Charlotte"></option><option value="Christina Drosos"></option><option value="Daniel Webster"></option><option value="Danielle Kozazcki"></option><option value="Eden Marco"></option><option value="Elle A Compagni"></option><option value="Emine Enver"></option><option value="Eric Ebers"></option><option value="Erica Jerome"></option><option value="Grace Etherton"></option><option value="Jackson Morgan"></option><option value="Jacob Choi"></option><option value="Jocas Navea Bajwa"></option><option value="Jordan Chiolis"></option><option value="Josh Archer"></option><option value="Kaitlyn Porter"></option><option value="Karen"></option><option value="Katie Kreshek"></option><option value="Ky Bernard"></option><option value="Kyler Moore"></option><option value="Lindsay Magin"></option><option value="Madison 'Mads' Kuhn"></option><option value="Maggie Calegari"></option><option value="Marc Sansome"></option><option value="Montse Molas"></option><option value="Morgan Rogers"></option><option value="Olivia Altman"></option><option value="Rachel Lea Fishman"></option><option value="Rachel Schwandt"></option><option value="Sam Butts"></option><option value="Samantha Westermeyer"></option><option value="Saylor Troop"></option><option value="Scott Bartel"></option><option value="Sophie Kovacs"></option><option value="Yvette Johnson"></option></datalist>
+</div>
+<div class="form-group">
+<label>Your Email <span class="req">*</span></label>
+<input type="email" id="loginEmail" placeholder="you@arketa.com" required style="width:100%; padding:11px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.92rem; font-family:inherit;">
+</div>
+<button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px; justify-content:center;">Continue</button>
+</form>
+</div>
+</div>
+
+<div class="container">
+
+<div class="nav-bar">
+<div class="nav-bar-inner">
+<button class="nav-tab active" onclick="switchTab('book')">Book a Call</button>
+<button class="nav-tab" id="requestsTab" onclick="switchTab('requests')">My Requests <span class="badge" id="myBadge">0</span></button>
+<button class="nav-tab" id="adminTab" onclick="switchTab('admin')">Manage <span class="badge" id="adminBadge">3</span></button>
+</div>
+</div>
+
+<div id="tab-book" class="tab-panel active">
+<div class="tier-lookup">
+<h2 class="section-title" style="margin-bottom:2px;">Step 1 — What platform is the partner transferring from?</h2>
+<p class="section-subtitle">Search their current platform to find the right Studio Tier and book the correct call.</p>
+<input type="text" id="tierSearch" placeholder="Search a platform (e.g. Mindbody, Wix, Acuity)..." oninput="filterTierList()">
+<div id="tierResults" class="tier-results"></div>
+<button type="button" class="btn btn-outline btn-no-migration" onclick="selectNoMigration()">Not migrating any data / new studio →</button>
+<div id="resolvedTierBox"></div>
+</div>
+
+<div class="divider"><span>Or request a custom time</span></div>
+
+<div class="form-card">
+<h2 class="section-title">Request a Kickoff Time</h2>
+<p class="section-subtitle">Fill out the details and Scott will coordinate availability.</p>
+<div class="note-callout">
+<span class="icon">📌</span>
+<span>Kickoff call times can take up to a week to land depending on availability. Once you submit, we'll hand you a ready-to-send email so your partner can self-start on their onboarding checklist right away — no need to wait for the call.</span>
+</div>
+<form id="requestForm" onsubmit="handleSubmit(event)">
+<div class="form-grid">
+<div class="form-group">
+<label>Seller's Name <span class="req">*</span></label>
+<input type="text" id="sellerName" list="sellerList" required placeholder="Start typing your name..." autocomplete="off">
+<datalist id="sellerList"><option value="Abby Purcell"></option><option value="Alexandra"></option><option value="Alexandra Axenbeck"></option><option value="Allison Stahl"></option><option value="Aya Zeplovitch"></option><option value="Charlotte"></option><option value="Christina Drosos"></option><option value="Daniel Webster"></option><option value="Danielle Kozazcki"></option><option value="Eden Marco"></option><option value="Elle A Compagni"></option><option value="Emine Enver"></option><option value="Eric Ebers"></option><option value="Erica Jerome"></option><option value="Grace Etherton"></option><option value="Jackson Morgan"></option><option value="Jacob Choi"></option><option value="Jocas Navea Bajwa"></option><option value="Jordan Chiolis"></option><option value="Josh Archer"></option><option value="Kaitlyn Porter"></option><option value="Karen"></option><option value="Katie Kreshek"></option><option value="Kyler Moore"></option><option value="Lindsay Magin"></option><option value="Madison 'Mads' Kuhn"></option><option value="Maggie Calegari"></option><option value="Marc Sansome"></option><option value="Montse Molas"></option><option value="Morgan Rogers"></option><option value="Olivia Altman"></option><option value="Rachel Lea Fishman"></option><option value="Rachel Schwandt"></option><option value="Sam Butts"></option><option value="Samantha Westermeyer"></option><option value="Saylor Troop"></option><option value="Scott Bartel"></option><option value="Sophie Kovacs"></option><option value="Yvette Johnson"></option></datalist>
+</div>
+<div class="form-group">
+<label>Partner / Studio Name <span class="req">*</span></label>
+<input type="text" id="partnerName" placeholder="e.g. Flow Yoga Studio" required>
+</div>
+<div class="form-group">
+<label>HubSpot Link <span class="opt">(optional)</span></label>
+<input type="text" id="hubspotDeal" placeholder="Paste deal URL, if you have one" oninput="onHubspotDealInput()" onblur="onHubspotDealBlur()">
+<span id="checklistLookupStatus" class="form-tier-source" style="margin-top:4px; display:block;"></span>
+</div>
+<div class="form-group">
+<label>Partner Time Zone <span class="req">*</span></label>
+<select id="partnerTz" required>
+<option value="">Select time zone...</option>
+<optgroup label="North America">
+<option value="Eastern (EST/EDT)">Eastern (EST/EDT)</option>
+<option value="Central (CST/CDT)">Central (CST/CDT)</option>
+<option value="Mountain (MST/MDT)">Mountain (MST/MDT)</option>
+<option value="Pacific (PST/PDT)">Pacific (PST/PDT)</option>
+<option value="Alaska (AKST)">Alaska (AKST)</option>
+<option value="Hawaii (HST)">Hawaii (HST)</option>
+<option value="Atlantic (AST)">Atlantic (AST)</option>
+</optgroup>
+<optgroup label="South America">
+<option value="Brazil / São Paulo (BRT)">Brazil / São Paulo (BRT)</option>
+<option value="Argentina (ART)">Argentina (ART)</option>
+<option value="Chile (CLT)">Chile (CLT)</option>
+<option value="Colombia (COT)">Colombia (COT)</option>
+</optgroup>
+<optgroup label="Europe / Africa">
+<option value="UK / Ireland (GMT/BST)">UK / Ireland (GMT/BST)</option>
+<option value="Western Europe (WET)">Western Europe (WET)</option>
+<option value="Central Europe (CET/CEST)">Central Europe (CET/CEST)</option>
+<option value="Eastern Europe (EET/EEST)">Eastern Europe (EET/EEST)</option>
+<option value="Moscow (MSK)">Moscow (MSK)</option>
+<option value="South Africa (SAST)">South Africa (SAST)</option>
+</optgroup>
+<optgroup label="Middle East / Asia">
+<option value="Gulf / Dubai (GST)">Gulf / Dubai (GST)</option>
+<option value="India (IST)">India (IST)</option>
+<option value="Thailand / Vietnam (ICT)">Thailand / Vietnam (ICT)</option>
+<option value="Singapore / Hong Kong (SGT/HKT)">Singapore / Hong Kong (SGT/HKT)</option>
+<option value="China (CST)">China (CST)</option>
+<option value="Japan / Korea (JST/KST)">Japan / Korea (JST/KST)</option>
+</optgroup>
+<optgroup label="Australia / Pacific">
+<option value="Perth (AWST)">Perth (AWST)</option>
+<option value="Adelaide / Darwin (ACST)">Adelaide / Darwin (ACST)</option>
+<option value="Sydney / Melbourne / Brisbane (AEST/AEDT)">Sydney / Melbourne / Brisbane (AEST/AEDT)</option>
+<option value="New Zealand (NZST/NZDT)">New Zealand (NZST/NZDT)</option>
+</optgroup>
+<option value="Other">Other (specify in notes)</option>
+</select>
+</div>
+<div class="form-group full">
+<label>Studio Tier</label>
+<div id="formTierDisplay" class="form-tier-display">
+<p class="form-tier-empty">Pick a platform in Step 1 above to set the Studio Tier.</p>
+</div>
+</div>
+<div class="form-group full">
+<label>Preferred Days <span class="req">*</span></label>
+<div class="day-chips">
+<input type="checkbox" name="days" id="d1" value="Monday"><label for="d1">Mon</label>
+<input type="checkbox" name="days" id="d2" value="Tuesday"><label for="d2">Tue</label>
+<input type="checkbox" name="days" id="d3" value="Wednesday"><label for="d3">Wed</label>
+<input type="checkbox" name="days" id="d4" value="Thursday"><label for="d4">Thu</label>
+<input type="checkbox" name="days" id="d5" value="Friday"><label for="d5">Fri</label>
+</div>
+</div>
+<div class="form-group">
+<label>Earliest Time (partner local) <span class="req">*</span></label>
+<select id="timeStart" required>
+<option value="">Select...</option>
+<option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option>
+<option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option>
+<option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option>
+</select>
+</div>
+<div class="form-group">
+<label>Latest Time (partner local) <span class="req">*</span></label>
+<select id="timeEnd" required>
+<option value="">Select...</option>
+<option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option>
+<option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option>
+<option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option>
+</select>
+</div>
+<div class="form-group full">
+<label>Additional Notes</label>
+<textarea id="notes" placeholder="Anything else Scott should know?"></textarea>
+</div>
+</div>
+<div style="margin-top: 22px;">
+<button type="submit" class="btn btn-primary" id="submitBtn">
+<span id="btnText">Submit Request</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+
+<div id="tab-requests" class="tab-panel">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<div>
+<h2 class="section-title">My Requests</h2>
+<p class="section-subtitle" style="margin-bottom: 0;">Kickoff requests you've submitted.</p>
+</div>
+</div>
+<div class="request-list" id="myRequestsList"></div>
+</div>
+
+<div id="tab-admin" class="tab-panel">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<h2 class="section-title">Manage Requests</h2>
+<p class="section-subtitle" style="margin-bottom: 0;">All kickoff time requests. Mark as done when scheduled.</p>
+</div>
+<div style="display: flex; gap: 8px;">
+<button class="btn btn-outline btn-sm" onclick="filterAdmin('all')" id="filterAll">All</button>
+<button class="btn btn-outline btn-sm" onclick="filterAdmin('pending')" id="filterPending">Pending</button>
+<button class="btn btn-outline btn-sm" onclick="filterAdmin('done')" id="filterDone">Done</button>
+<button class="btn btn-outline btn-sm" onclick="filterAdmin('cancelled')" id="filterCancelled">Cancelled</button>
+</div>
+</div>
+<div class="request-list" id="adminRequestsList"></div>
+</div>
+
+</div>
+
+<div class="footer">Arketa — Studio Kickoff Booking Tool · v2</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+<h3>Mark as Scheduled</h3>
+<p class="modal-sub">Select the onboarder for <strong id="modalPartner"></strong></p>
+<div class="form-group">
+<label>Onboarder <span class="req">*</span></label>
+<select id="onboarderSelect" style="width:100%; padding:11px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.92rem; font-family:inherit;">
+<option value="">Select onboarder...</option>
+<option value="Scott">Scott Bartel</option>
+<option value="Montse">Montse Molas</option>
+<option value="Rachel">Rachel Schwandt</option>
+<option value="Elle">Elle Compagni</option>
+<option value="Erica">Erica Jerome</option>
+<option value="Danielle">Danielle Kozazcki</option>
+<option value="Alex">Alex Axenbeck</option>
+<option value="Lindsay">Lindsay Magin</option>
+<option value="Morgan">Morgan Rogers</option>
+<option value="Ky">Ky Bernard</option>
+</select>
+</div>
+<div class="form-group">
+<label>Call Date &amp; Time <span class="req">*</span></label>
+<div style="display:flex; gap:8px;">
+<input type="date" id="callDate" style="flex:1; padding:11px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.92rem; font-family:inherit;">
+<select id="callTime" style="flex:1; padding:11px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.92rem; font-family:inherit;">
+<option value="">Select time...</option>
+<option>12:00 AM</option><option>12:15 AM</option><option>12:30 AM</option><option>12:45 AM</option><option>1:00 AM</option><option>1:15 AM</option><option>1:30 AM</option><option>1:45 AM</option><option>2:00 AM</option><option>2:15 AM</option><option>2:30 AM</option><option>2:45 AM</option><option>3:00 AM</option><option>3:15 AM</option><option>3:30 AM</option><option>3:45 AM</option><option>4:00 AM</option><option>4:15 AM</option><option>4:30 AM</option><option>4:45 AM</option><option>5:00 AM</option><option>5:15 AM</option><option>5:30 AM</option><option>5:45 AM</option><option>6:00 AM</option><option>6:15 AM</option><option>6:30 AM</option><option>6:45 AM</option><option>7:00 AM</option><option>7:15 AM</option><option>7:30 AM</option><option>7:45 AM</option><option>8:00 AM</option><option>8:15 AM</option><option>8:30 AM</option><option>8:45 AM</option><option>9:00 AM</option><option>9:15 AM</option><option>9:30 AM</option><option>9:45 AM</option><option>10:00 AM</option><option>10:15 AM</option><option>10:30 AM</option><option>10:45 AM</option><option>11:00 AM</option><option>11:15 AM</option><option>11:30 AM</option><option>11:45 AM</option><option>12:00 PM</option><option>12:15 PM</option><option>12:30 PM</option><option>12:45 PM</option><option>1:00 PM</option><option>1:15 PM</option><option>1:30 PM</option><option>1:45 PM</option><option>2:00 PM</option><option>2:15 PM</option><option>2:30 PM</option><option>2:45 PM</option><option>3:00 PM</option><option>3:15 PM</option><option>3:30 PM</option><option>3:45 PM</option><option>4:00 PM</option><option>4:15 PM</option><option>4:30 PM</option><option>4:45 PM</option><option>5:00 PM</option><option>5:15 PM</option><option>5:30 PM</option><option>5:45 PM</option><option>6:00 PM</option><option>6:15 PM</option><option>6:30 PM</option><option>6:45 PM</option><option>7:00 PM</option><option>7:15 PM</option><option>7:30 PM</option><option>7:45 PM</option><option>8:00 PM</option><option>8:15 PM</option><option>8:30 PM</option><option>8:45 PM</option><option>9:00 PM</option><option>9:15 PM</option><option>9:30 PM</option><option>9:45 PM</option><option>10:00 PM</option><option>10:15 PM</option><option>10:30 PM</option><option>10:45 PM</option><option>11:00 PM</option><option>11:15 PM</option><option>11:30 PM</option><option>11:45 PM</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label>Call Time Zone <span class="req">*</span></label>
+<select id="callTimeZone" style="width:100%; padding:11px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.92rem; font-family:inherit;">
+<option value="">Select time zone...</option>
+<optgroup label="North America">
+<option value="ET">Eastern (ET)</option>
+<option value="CT">Central (CT)</option>
+<option value="MT">Mountain (MT)</option>
+<option value="PT">Pacific (PT)</option>
+<option value="AKT">Alaska (AKT)</option>
+<option value="HT">Hawaii (HT)</option>
+<option value="AST">Atlantic (AST)</option>
+</optgroup>
+<optgroup label="South America">
+<option value="BRT">Brazil / São Paulo (BRT)</option>
+<option value="ART">Argentina (ART)</option>
+<option value="CLT">Chile (CLT)</option>
+<option value="COT">Colombia (COT)</option>
+</optgroup>
+<optgroup label="Europe / Africa">
+<option value="GMT">UK / Ireland (GMT/BST)</option>
+<option value="WET">Western Europe (WET)</option>
+<option value="CET">Central Europe (CET/CEST)</option>
+<option value="EET">Eastern Europe (EET/EEST)</option>
+<option value="MSK">Moscow (MSK)</option>
+<option value="SAST">South Africa (SAST)</option>
+</optgroup>
+<optgroup label="Middle East / Asia">
+<option value="GST">Gulf / Dubai (GST)</option>
+<option value="IST-IN">India (IST)</option>
+<option value="ICT">Thailand / Vietnam (ICT)</option>
+<option value="SGT">Singapore / Hong Kong (SGT/HKT)</option>
+<option value="CST-CN">China (CST)</option>
+<option value="JST">Japan / Korea (JST/KST)</option>
+</optgroup>
+<optgroup label="Australia / Pacific">
+<option value="AWST">Perth (AWST)</option>
+<option value="ACST">Adelaide / Darwin (ACST)</option>
+<option value="AEST">Sydney / Melbourne / Brisbane (AEST/AEDT)</option>
+<option value="NZST">New Zealand (NZST/NZDT)</option>
+</optgroup>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="modal-check-row">
+<input type="checkbox" id="notifySlackSchedule" checked>
+<label for="notifySlackSchedule">Notify seller &amp; onboarder in Slack</label>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-sm" onclick="closeModal()">Cancel</button>
+<button class="btn btn-done btn-sm" id="confirmScheduleBtn" onclick="confirmSchedule()">Confirm</button>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="cancelModalOverlay" onclick="if(event.target===this)closeCancelModal()">
+<div class="modal">
+<h3>Cancel Request</h3>
+<p class="modal-sub">Let the seller know why <strong id="cancelModalPartner"></strong>'s kickoff request is being cancelled (optional).</p>
+<div class="form-group">
+<label>Reason for Cancellation</label>
+<textarea id="cancelReason" placeholder="e.g. Partner isn't ready to launch yet — will re-book next quarter." style="width:100%; min-height:90px; padding:11px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.92rem; font-family:inherit; resize:vertical;"></textarea>
+</div>
+<div class="modal-check-row">
+<input type="checkbox" id="notifySlackCancel" checked>
+<label for="notifySlackCancel">Notify seller in Slack</label>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-sm" onclick="closeCancelModal()">Never Mind</button>
+<button class="btn btn-cancel btn-sm" id="confirmCancelBtn" onclick="confirmCancel()">Cancel Request</button>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="editModalOverlay" onclick="if(event.target===this)closeEditModal()">
+<div class="modal modal-wide">
+<h3>Edit Request</h3>
+<p class="modal-sub">Update the details for <strong id="editModalPartner"></strong></p>
+<div class="form-grid">
+<div class="form-group">
+<label>Seller's Name <span class="req">*</span></label>
+<input type="text" id="editSellerName" list="sellerList" autocomplete="off">
+</div>
+<div class="form-group">
+<label>Partner / Studio Name <span class="req">*</span></label>
+<input type="text" id="editPartnerName">
+</div>
+<div class="form-group full">
+<label>HubSpot Link <span class="opt">(optional)</span></label>
+<input type="text" id="editHubspotDeal" placeholder="Paste deal URL, if you have one">
+</div>
+<div class="form-group">
+<label>Partner Time Zone <span class="req">*</span></label>
+<select id="editPartnerTz">
+<option value="">Select time zone...</option>
+<optgroup label="North America">
+<option value="Eastern (EST/EDT)">Eastern (EST/EDT)</option>
+<option value="Central (CST/CDT)">Central (CST/CDT)</option>
+<option value="Mountain (MST/MDT)">Mountain (MST/MDT)</option>
+<option value="Pacific (PST/PDT)">Pacific (PST/PDT)</option>
+<option value="Alaska (AKST)">Alaska (AKST)</option>
+<option value="Hawaii (HST)">Hawaii (HST)</option>
+<option value="Atlantic (AST)">Atlantic (AST)</option>
+</optgroup>
+<optgroup label="South America">
+<option value="Brazil / São Paulo (BRT)">Brazil / São Paulo (BRT)</option>
+<option value="Argentina (ART)">Argentina (ART)</option>
+<option value="Chile (CLT)">Chile (CLT)</option>
+<option value="Colombia (COT)">Colombia (COT)</option>
+</optgroup>
+<optgroup label="Europe / Africa">
+<option value="UK / Ireland (GMT/BST)">UK / Ireland (GMT/BST)</option>
+<option value="Western Europe (WET)">Western Europe (WET)</option>
+<option value="Central Europe (CET/CEST)">Central Europe (CET/CEST)</option>
+<option value="Eastern Europe (EET/EEST)">Eastern Europe (EET/EEST)</option>
+<option value="Moscow (MSK)">Moscow (MSK)</option>
+<option value="South Africa (SAST)">South Africa (SAST)</option>
+</optgroup>
+<optgroup label="Middle East / Asia">
+<option value="Gulf / Dubai (GST)">Gulf / Dubai (GST)</option>
+<option value="India (IST)">India (IST)</option>
+<option value="Thailand / Vietnam (ICT)">Thailand / Vietnam (ICT)</option>
+<option value="Singapore / Hong Kong (SGT/HKT)">Singapore / Hong Kong (SGT/HKT)</option>
+<option value="China (CST)">China (CST)</option>
+<option value="Japan / Korea (JST/KST)">Japan / Korea (JST/KST)</option>
+</optgroup>
+<optgroup label="Australia / Pacific">
+<option value="Perth (AWST)">Perth (AWST)</option>
+<option value="Adelaide / Darwin (ACST)">Adelaide / Darwin (ACST)</option>
+<option value="Sydney / Melbourne / Brisbane (AEST/AEDT)">Sydney / Melbourne / Brisbane (AEST/AEDT)</option>
+<option value="New Zealand (NZST/NZDT)">New Zealand (NZST/NZDT)</option>
+</optgroup>
+<option value="Other">Other (specify in notes)</option>
+</select>
+</div>
+<div class="form-group">
+<label>Studio Tier</label>
+<select id="editTier">
+<option value="">Unchanged</option>
+<option value="A">Studio Tier A</option>
+<option value="B">Studio Tier B</option>
+<option value="C">Studio Tier C</option>
+</select>
+</div>
+<div class="form-group full">
+<label>Preferred Days <span class="req">*</span></label>
+<div class="day-chips">
+<input type="checkbox" id="ed1"><label for="ed1">Mon</label>
+<input type="checkbox" id="ed2"><label for="ed2">Tue</label>
+<input type="checkbox" id="ed3"><label for="ed3">Wed</label>
+<input type="checkbox" id="ed4"><label for="ed4">Thu</label>
+<input type="checkbox" id="ed5"><label for="ed5">Fri</label>
+</div>
+</div>
+<div class="form-group">
+<label>Earliest Time (partner local) <span class="req">*</span></label>
+<select id="editTimeStart">
+<option value="">Select...</option>
+<option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option>
+<option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option>
+<option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option>
+</select>
+</div>
+<div class="form-group">
+<label>Latest Time (partner local) <span class="req">*</span></label>
+<select id="editTimeEnd">
+<option value="">Select...</option>
+<option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option>
+<option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option>
+<option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option>
+</select>
+</div>
+<div class="form-group full">
+<label>Additional Notes</label>
+<textarea id="editNotes" placeholder="Anything else Scott should know?"></textarea>
+</div>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-sm" onclick="closeEditModal()">Cancel</button>
+<button class="btn btn-primary btn-sm" onclick="confirmEdit()">Save Changes</button>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="emailDraftModalOverlay" onclick="if(event.target===this)closeEmailDraftModal()">
+<div class="modal modal-wide">
+<h3>🎉 Request submitted!</h3>
+<p class="modal-sub">Kickoff times can take up to a week to land. Send this now so <strong id="emailDraftPartner"></strong> can self-start on their onboarding checklist right away.</p>
+<div class="form-group">
+<label>Email Draft</label>
+<textarea id="emailDraftBody" readonly style="width:100%; min-height:220px; padding:12px 13px; border:1.5px solid var(--gray-200); border-radius:10px; font-size:0.88rem; font-family:inherit; line-height:1.6; resize:vertical;"></textarea>
+</div>
+<div class="modal-actions" style="justify-content:flex-start; flex-wrap:wrap;">
+<button class="btn btn-primary btn-sm" onclick="copyEmailDraft()">Copy Email</button>
+<button class="btn btn-outline btn-sm" onclick="closeEmailDraftModal()">Done</button>
+</div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+  // ── Config ──
+  const SLACK_WEBHOOK_URL = '/api/notify';
+  // Dedicated webhook for #migrations, used to auto-post the "vet this platform" message
+  const MIGRATIONS_WEBHOOK_URL = '/api/notify?type=migrations';
+  const MIGRATIONS_CHANNEL_URL = 'https://arketa.slack.com/archives/C02B6DBA42X';
+  const SCOTT_USER_ID = 'U04QU2SADL7';
+  const JORDAN_USER_ID = 'U07T8FST9AT'; // Jordan Chiolis — CX Manager, Migrations & Product Training
+  const LOCAL_KEY = 'arketa_kickoff_requests';
+
+  // ═══ SHARED STORAGE — Supabase ═══
+  const SUPABASE_URL = 'https://uyymckzwxipizlhtamuv.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_i1z1OIda2GUsfTsLP0ffCQ_MIOINs3B';
+
+  const ONBOARDERS = {
+    'Scott':    { full: 'Scott Bartel',      slackId: 'U04QU2SADL7' },
+    'Montse':   { full: 'Montse Molas',      slackId: 'U078X0ARZ7F' },
+    'Rachel':   { full: 'Rachel Schwandt',   slackId: 'U0ADP49G2DA' },
+    'Elle':     { full: 'Elle Compagni',     slackId: 'U09BYF83H8E' },
+    'Erica':    { full: 'Erica Jerome',      slackId: 'U095RBJUTS8' },
+    'Danielle': { full: 'Danielle Kozazcki', slackId: 'U09PDU88G4C' },
+    'Alex':     { full: 'Alex Axenbeck',     slackId: 'U08R1NK3U20' },
+    'Lindsay':  { full: 'Lindsay Magin',     slackId: 'U080DJ060P6' },
+    'Morgan':   { full: 'Morgan Rogers',     slackId: 'U0B2H0PPNPP' },
+    'Ky':      { full: 'Ky Bernard',        slackId: 'U09PKUWRJEQ' }
+  };
+
+  const SELLERS = {
+    'Kaitlyn Porter': 'U08K6ASJV0C',
+    'Sophie Kovacs': 'U09PDU9121J',
+    'Abby Purcell': 'U088AV4RBCM',
+    'Cooper Hoag': 'U09C133JZA8',
+    'Saylor Troop': 'U062S94QGRY',
+    'Anita Mullen': 'U08QQT2P7S5',
+    'Crystal Lynch': 'U09APNR7DRR',
+    'Grace Etherton': 'U09APNVAFC3',
+    'Grace Cassidy': 'U09J45G6MNV',
+    'Margaret': 'U09APNZUFGT',
+    'Maggie Calegari': 'U02PKNMGYH3',
+    'Scott Bartel': 'U04QU2SADL7',
+    'Daniel Webster': 'U09JP6DKFEU'
+  };
+
+  // ── Studio Tier reference (platform a partner is migrating from → tier) ──
+  // Source: Studio Tier — Data Transfer Source Mapping (updated 8/21/26)
+  const TIER_A = ['No Transfer (New Studio)', 'Arketa', 'Calendly', 'Constant Contact', 'Google Calendar', 'GoDaddy', 'Eventbrite', 'Excel', 'Instabook'];
+  const TIER_B = ['Acuity', 'Glofox', 'Vagaro', 'Wix', 'TeamUp', 'Square', 'Walla', 'Bsport', 'Pushpress', 'Bookee/Kenko', 'ClassFit', 'Gymdesk', 'Jane App', 'PunchPass', 'Shopify', 'Squarespace', 'StudioBookings', 'Tula', 'exercise.com', 'Gymcatch', 'GymMaster', 'Kajabi', 'Momoyoga', 'Union', 'Uscreen', 'Vimeo', 'Hey Marvelous', 'Recess TV', 'Zingfit', 'Go High Level', 'Kilo', 'PocketSuite', 'Wodify', 'Fitli', 'Fitune', 'Get Timely', 'GoMotion (by SportsEngine)', 'Mangomint', 'MyDojo.cloud', 'Octiv', 'Ovatu', 'Pike13', 'PT Minder', 'Schedulicity', 'Spivi', 'Studious Pro', 'SweatPals', 'Ubindi', 'Wellyx', 'Zenoti', 'Amelia', 'Ashbourne', 'Atom', 'Bookeo', 'Bookings Essential', 'Booknetic', 'Cardpoint', 'Cerbo', 'Cliniko', 'Clubworx', 'CodexFit', 'EZ Facility', 'Fitco', 'FitHive', 'Fresha', 'Growthware', 'GymOwners', 'Karmasoft', 'Member Solutions', 'MemberPress', 'MemberSpace', 'Movement', 'My PT Hub', 'Nookal', 'Offering Tree', 'Patreon', 'Payhip', 'Paysimple', 'Schedulista', 'Simplero', 'Sixpac', 'Spark Membership', 'Sudor.fit', 'Taramala', 'Trainerize', 'WooCommerce', 'Wunderbook', 'LegitFit', 'AthletaDesk', 'PhysioFunnels', 'Practice Better', 'MyStudio'];
+  const TIER_C = ['fitDEGREE', 'ZenPlanner', 'Xplor Triib', 'My Best Studio', 'Hapana', 'Mindbody', 'WellnessLiving', 'Momence', 'Mariana Tek', 'ClubReady', 'ABC Fitness', 'Club Automation'];
+  const TIER_INDEX = [
+    ...TIER_A.map(name => ({ name, tier: 'A' })),
+    ...TIER_B.map(name => ({ name, tier: 'B' })),
+    ...TIER_C.map(name => ({ name, tier: 'C' }))
+  ];
+
+  // Tier → Calendly link / display metadata, used by the Step 1 "resolve a
+  // platform" flow so both sellers and partners land on the right meeting type.
+  const TIER_META = {
+    A: { label: 'Studio Tier A', cls: 'tierA', link: 'https://calendly.com/d/dtpb-mz9-w2v/kickoff-call-a', btnClass: 'btn-tierA' },
+    B: { label: 'Studio Tier B', cls: 'tierB', link: 'https://calendly.com/d/d3vx-tkr-7fw/kickoff-call-b', btnClass: 'btn-tierB' },
+    C: { label: 'Studio Tier C', cls: 'tierC', link: 'https://calendly.com/d/dvsg-2xp-968/kickoff-call-c', btnClass: 'btn-tierC' }
+  };
+  let resolvedTier = null;
+  let resolvedPlatform = '';
+
+  let _lastTierQuery = '';
+  function escapeHtml(s) {
+    return (s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function renderTierList(query) {
+    const el = document.getElementById('tierResults');
+    if (!el) return;
+    _lastTierQuery = (query || '').trim();
+    const q = _lastTierQuery.toLowerCase();
+    // Search-only: show nothing until the user actually types something.
+    if (!q) {
+      el.className = 'tier-results';
+      el.innerHTML = '';
+      return;
+    }
+    const matches = TIER_INDEX.filter(x => x.name.toLowerCase().includes(q));
+    if (matches.length === 0) {
+      el.className = 'tier-results empty-msg';
+      el.innerHTML = `
+        <div class="migrations-cta">
+          <div class="migrations-cta-head">
+            <div class="migrations-cta-icon">🔎</div>
+            <div class="migrations-cta-text">
+              <strong>No match for "${escapeHtml(_lastTierQuery)}"</strong>
+              <p>Message #migrations to get it vetted — the team will get back to you with the right tier.</p>
+            </div>
+          </div>
+          <div class="migrations-cta-actions">
+            <button type="button" class="btn btn-sm btn-amber" onclick="sendMigrationsMessage(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Send message to #migrations</button>
+          </div>
+          <div class="manual-guess">
+            <p class="manual-guess-label">In a hurry? Pick your best guess and book now — you can always correct it later:</p>
+            <div class="manual-guess-actions">
+              <a href="https://calendly.com/d/dtpb-mz9-w2v/kickoff-call-a" target="_blank" class="btn btn-sm btn-tierA tooltip-wrap" data-tooltip="e.g. No Transfer (New Studio), Arketa, Calendly, Excel" onclick="resolvePlatform('Manually selected (unmatched)', 'A')">🟢 Studio Tier A</a>
+              <a href="https://calendly.com/d/d3vx-tkr-7fw/kickoff-call-b" target="_blank" class="btn btn-sm btn-tierB tooltip-wrap" data-tooltip="e.g. Acuity, Vagaro, Glofox, Wix, Squarespace" onclick="resolvePlatform('Manually selected (unmatched)', 'B')">🔵 Studio Tier B</a>
+              <a href="https://calendly.com/d/dvsg-2xp-968/kickoff-call-c" target="_blank" class="btn btn-sm btn-tierC tooltip-wrap" data-tooltip="e.g. Mindbody, WellnessLiving, Momence, ClubReady" onclick="resolvePlatform('Manually selected (unmatched)', 'C')">🟣 Studio Tier C</a>
+            </div>
+          </div>
+        </div>`;
+      return;
+    }
+    el.className = 'tier-results';
+    // Rank names that start with the query above names that merely contain it,
+    // so typing feels intuitive (e.g. "wi" surfaces "Wix" before "Growthware").
+    el.innerHTML = matches
+      .sort((a, b) => {
+        const an = a.name.toLowerCase(), bn = b.name.toLowerCase();
+        const aRank = an.startsWith(q) ? 0 : 1;
+        const bRank = bn.startsWith(q) ? 0 : 1;
+        if (aRank !== bRank) return aRank - bRank;
+        return a.name.localeCompare(b.name);
+      })
+      .map(x => '<button type="button" class="tier-chip tier-chip-btn tier' + x.tier + '" data-name="' + escapeHtml(x.name) + '" data-tier="' + x.tier + '" onclick="resolvePlatformFromBtn(this)"><span class="dot"></span>' + x.name + ' · Tier ' + x.tier + '</button>')
+      .join('');
+  }
+  function filterTierList() { renderTierList(document.getElementById('tierSearch').value); }
+  function resolvePlatformFromBtn(btn) { resolvePlatform(btn.dataset.name, btn.dataset.tier); }
+
+  // Auto-post a ready-made vetting message straight to #migrations (via a
+  // dedicated incoming webhook) when a seller can't find their partner's
+  // platform in the tier list — no copy/paste needed.
+  function sendMigrationsMessage(btn) {
+    const platform = _lastTierQuery || 'this platform';
+    const sellerName = currentUser ? currentUser.name : 'A seller';
+    const jordanTag = `<@${JORDAN_USER_ID}>`;
+
+    const msg =
+      `🔎 *Studio Tier vetting needed*\n\n` +
+      `${jordanTag}, ${sellerName} couldn't find a match for *"${platform}"* while booking a kickoff call and needs to know which Studio Tier it falls under.\n\n` +
+      `Can someone vet it and reply here? Thanks!`;
+
+    if (btn) { btn.disabled = true; }
+
+    fetch(MIGRATIONS_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({ text: msg })
+    }).then(() => {
+      showToast('Sent to #migrations!', 'success');
+    }).catch(() => {
+      showToast('Could not reach Slack — message #migrations directly.', 'error');
+    }).finally(() => {
+      if (btn) { btn.disabled = false; }
+      window.open(MIGRATIONS_CHANNEL_URL, '_blank');
+    });
+  }
+
+  // ── Self-start email draft ──
+  // Right after a request is submitted we hand the seller a ready-to-send
+  // email that points their partner at their Onboarding Checklist so they
+  // can get moving before the call is even scheduled. If a HubSpot deal
+  // link was provided, the checklist link + contact email are looked up
+  // automatically (see lookupHubspotChecklist); otherwise we fall back to
+  // the generic Partner Checklist app link below.
+  const PARTNER_CHECKLIST_URL = 'https://arketa-partner-checklist.vercel.app';
+
+  // Populated by lookupHubspotChecklist() when a HubSpot deal link is provided.
+  let dealChecklistLink = null;
+  let dealContactEmail = null;
+  let _lastLookedUpDealUrl = null;
+
+  function onHubspotDealInput() {
+    const status = document.getElementById('checklistLookupStatus');
+    const val = document.getElementById('hubspotDeal').value.trim();
+    if (val !== _lastLookedUpDealUrl) {
+      dealChecklistLink = null;
+      dealContactEmail = null;
+      if (status) status.textContent = '';
+    }
+  }
+
+  function onHubspotDealBlur() {
+    const val = document.getElementById('hubspotDeal').value.trim();
+    if (val) lookupHubspotChecklist(val);
+  }
+
+  // Calls our own /api/checklist serverless function (never HubSpot directly
+  // from the browser) so the HubSpot access token stays server-side.
+  async function lookupHubspotChecklist(dealUrl) {
+    const status = document.getElementById('checklistLookupStatus');
+    if (!dealUrl) return;
+    if (dealUrl === _lastLookedUpDealUrl && (dealChecklistLink || dealContactEmail)) return;
+    if (status) status.textContent = 'Looking up checklist link from HubSpot…';
+    try {
+      const res = await fetch('/api/checklist?dealUrl=' + encodeURIComponent(dealUrl));
+      const data = await res.json().catch(() => ({}));
+      _lastLookedUpDealUrl = dealUrl;
+      if (!res.ok || data.error) {
+        dealChecklistLink = null;
+        dealContactEmail = null;
+        if (status) status.textContent = '⚠️ Could not find a Studio Checklist Link on that deal — will use the default checklist link.';
+        return;
+      }
+      dealChecklistLink = data.checklistLink || null;
+      dealContactEmail = data.contactEmail || null;
+      if (status) {
+        status.textContent = dealChecklistLink
+          ? ('✓ Checklist link found' + (dealContactEmail ? ' · ' + dealContactEmail : ''))
+          : '⚠️ No Studio Checklist Link set on that deal yet — will use the default checklist link.';
+      }
+    } catch (e) {
+      dealChecklistLink = null;
+      dealContactEmail = null;
+      _lastLookedUpDealUrl = dealUrl;
+      if (status) status.textContent = '⚠️ Could not reach HubSpot — will use the default checklist link.';
+    }
+  }
+
+  function buildEmailDraft(request) {
+    const partner = request.partnerName || 'there';
+    const sellerFirst = (request.sellerName || 'the Arketa team').split(' ')[0];
+    const checklistUrl = request.checklistLink || PARTNER_CHECKLIST_URL;
+    const accessLine = request.contactEmail
+      ? `Access your checklist using your email address (${request.contactEmail}).`
+      : `Access your checklist using the email address you've been using with us.`;
+    const subject = `Welcome to Arketa — let's get ${request.partnerName || 'your studio'} started!`;
+    const body =
+`Hi ${partner} team,
+
+We're excited to get you up and running on Arketa! One of our onboarding specialists will be in touch personally to confirm your exact kickoff call time.
+
+In the meantime, you can jump into your Onboarding Checklist here:
+${checklistUrl}
+
+${accessLine} Getting a head start on the checklist means we can move even faster once we're on the call together.
+
+Talk soon,
+${sellerFirst}`;
+    return { subject, body };
+  }
+
+  function openEmailDraftModal(request) {
+    const { body } = buildEmailDraft(request);
+    document.getElementById('emailDraftPartner').textContent = request.partnerName || 'your partner';
+    document.getElementById('emailDraftBody').value = body;
+    document.getElementById('emailDraftModalOverlay').classList.add('open');
+  }
+
+  function closeEmailDraftModal() {
+    document.getElementById('emailDraftModalOverlay').classList.remove('open');
+  }
+
+  function copyEmailDraft() {
+    const ta = document.getElementById('emailDraftBody');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ta.value).then(() => {
+        showToast('Email copied — paste it into your email client', 'success');
+      }).catch(() => {
+        ta.select();
+        showToast('Could not copy — text is selected, use Cmd/Ctrl+C', 'error');
+      });
+    } else {
+      ta.select();
+      showToast('Could not copy — text is selected, use Cmd/Ctrl+C', 'error');
+    }
+  }
+
+  // Pull "A"/"B"/"C" out of a kickoffType string like "Studio Tier B"
+  function tierLetterFromType(type) {
+    if (!type) return null;
+    const m = /Tier\s*([ABC])/i.exec(type);
+    return m ? m[1].toUpperCase() : null;
+  }
+  // Render the studio tier as a colored chip instead of plain text
+  function tierBadgeHtml(type) {
+    const t = tierLetterFromType(type);
+    if (!t) return type || '—';
+    return '<span class="tier-chip tier' + t + '" style="padding:3px 10px; font-size:0.75rem;"><span class="dot"></span>' + type + '</span>';
+  }
+
+  // ── Step 1: resolve a platform (or manual pick) to a Studio Tier ──
+  // Drives both the "Book Your Kickoff Call" CTA and the auto-filled
+  // Studio Tier field on the custom request form below.
+  function resolvePlatform(platform, tier) {
+    resolvedTier = tier;
+    resolvedPlatform = platform;
+    showResolvedTier();
+    updateFormTierDisplay();
+  }
+
+  function selectNoMigration() {
+    resolvePlatform('No Transfer (New Studio)', 'A');
+  }
+
+  function showResolvedTier() {
+    const box = document.getElementById('resolvedTierBox');
+    if (!box) return;
+    if (!resolvedTier) { box.innerHTML = ''; return; }
+    const meta = TIER_META[resolvedTier];
+    box.innerHTML = `
+      <div class="tier-resolved ${meta.cls}">
+        <div class="tier-resolved-info">
+          <span class="tier-chip ${meta.cls}"><span class="dot"></span>${escapeHtml(resolvedPlatform)}</span>
+          <p>Resolved to <strong>${meta.label}</strong></p>
+        </div>
+        <a href="${meta.link}" target="_blank" class="btn ${meta.btnClass}">Book Your Kickoff Call →</a>
+      </div>`;
+  }
+
+  // Keeps the read-only Studio Tier field on the custom request form in sync
+  // with whatever was resolved in Step 1 (search result, "not migrating"
+  // shortcut, or a manual card pick).
+  function updateFormTierDisplay() {
+    const el = document.getElementById('formTierDisplay');
+    if (!el) return;
+    if (!resolvedTier) {
+      el.innerHTML = '<p class="form-tier-empty">Pick a platform in Step 1 above to set the Studio Tier.</p>';
+      return;
+    }
+    const meta = TIER_META[resolvedTier];
+    el.innerHTML = '<span class="tier-chip ' + meta.cls + '"><span class="dot"></span>' + meta.label + '</span>' +
+      (resolvedPlatform ? '<span class="form-tier-source">from "' + escapeHtml(resolvedPlatform) + '"</span>' : '');
+  }
+
+  // Clears Step 1 state after a successful submission so the next request
+  // starts fresh.
+  function resetKickoffFlow() {
+    resolvedTier = null;
+    resolvedPlatform = '';
+    const search = document.getElementById('tierSearch');
+    if (search) search.value = '';
+    renderTierList('');
+    showResolvedTier();
+    updateFormTierDisplay();
+    dealChecklistLink = null;
+    dealContactEmail = null;
+    _lastLookedUpDealUrl = null;
+    const status = document.getElementById('checklistLookupStatus');
+    if (status) status.textContent = '';
+  }
+
+  const ADMIN_EMAILS = ['maggiec@arketa.com', 'scott.b@arketa.com', 'maggiec@arketa.co'];
+  const ADMIN_KEY = 'arketa_kickoff_user';
+
+  let adminFilter = 'all';
+  let pendingScheduleId = null;
+  let _editingNoteId = null; // request id whose internal note is currently being edited
+  let currentUser = null;
+  let _cache = [];
+  let _cloudOk = false;
+  let _teamMembers = []; // synced from Slack via Netlify Function, fetched from Supabase
+
+  // ── Simple login gate ──
+  function getStoredUser() {
+    try { return JSON.parse(localStorage.getItem(ADMIN_KEY)); } catch { return null; }
+  }
+  function storeUser(user) { localStorage.setItem(ADMIN_KEY, JSON.stringify(user)); }
+  function isAdmin() { return currentUser && ADMIN_EMAILS.includes(currentUser.email.toLowerCase()); }
+
+  // ── Send to Slack (CORS-safe) ──
+  function sendToSlack(text) {
+    return fetch(SLACK_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({ text })
+    });
+  }
+
+  // ══════════════════════════════════════════════════
+  // SHARED STORAGE via Supabase (real database, CORS OK)
+  // ══════════════════════════════════════════════════
+  const SB_HEADERS = {
+    'apikey': SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Content-Type': 'application/json',
+    'Prefer': 'return=minimal'
+  };
+
+  // Load team members (synced from Slack) for the name autocomplete
+  async function loadTeamMembers() {
+    try {
+      const url = SUPABASE_URL + '/rest/v1/team_members'
+        + '?active=eq.true&order=name.asc&select=slack_id,name,email';
+      const res = await fetch(url, {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY
+        }
+      });
+      if (!res.ok) {
+        console.warn('team_members load returned', res.status);
+        return;
+      }
+      _teamMembers = await res.json();
+      // Build the <option> markup once, reuse in both the login popup and the form
+      const optionsHtml = _teamMembers
+        .map(m => '<option value="' + (m.name || '').replace(/"/g, '&quot;') + '"></option>')
+        .join('');
+      const sellerDl = document.getElementById('sellerList');
+      if (sellerDl) sellerDl.innerHTML = optionsHtml;
+      const loginDl = document.getElementById('loginNameList');
+      if (loginDl) loginDl.innerHTML = optionsHtml;
+      console.log('👥 Loaded', _teamMembers.length, 'team members from Supabase');
+    } catch (e) {
+      console.warn('Failed to load team members:', e);
+    }
+  }
+
+  // Get slack_id for a seller name. Checks the synced team list first,
+  // then falls back to the hardcoded SELLERS map for backward compatibility.
+  function getSellerSlackId(name) {
+    if (!name) return null;
+    const trimmed = name.trim();
+    const match = _teamMembers.find(m => (m.name || '').trim() === trimmed);
+    if (match) return match.slack_id;
+    return SELLERS[trimmed] || null;
+  }
+
+  async function initSharedStorage() {
+    await loadFromCloud();
+    // Migrate any existing localStorage-only data into the cloud
+    if (_cloudOk && _cache.length === 0) {
+      try {
+        const local = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+        if (local.length > 0) {
+          console.log('📦 Migrating', local.length, 'local requests to cloud...');
+          await saveToCloud(local);
+          showToast('Synced ' + local.length + ' request(s) to shared database!', 'success');
+        }
+      } catch (e) { console.warn('Migration check failed:', e); }
+    }
+  }
+
+  async function loadFromCloud() {
+    try {
+      const res = await fetch(
+        SUPABASE_URL + '/rest/v1/kickoff_requests?key=eq.requests&select=value',
+        { headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY } }
+      );
+      if (res.ok) {
+        const rows = await res.json();
+        if (rows.length > 0 && Array.isArray(rows[0].value)) {
+          _cache = rows[0].value;
+        } else {
+          _cache = [];
+        }
+        localStorage.setItem(LOCAL_KEY, JSON.stringify(_cache));
+        _cloudOk = true;
+        console.log('☁️ Loaded', _cache.length, 'requests from Supabase');
+      } else {
+        console.warn('Supabase load returned status:', res.status, await res.text());
+        _cloudOk = false;
+      }
+    } catch (e) {
+      console.warn('Supabase load failed:', e);
+      _cloudOk = false;
+    }
+  }
+
+  async function saveToCloud(reqs) {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(reqs));
+    _cache = reqs;
+    try {
+      const res = await fetch(
+        SUPABASE_URL + '/rest/v1/kickoff_requests?key=eq.requests',
+        {
+          method: 'PATCH',
+          headers: SB_HEADERS,
+          body: JSON.stringify({ value: reqs })
+        }
+      );
+      if (res.ok || res.status === 204) {
+        _cloudOk = true;
+        console.log('☁️ Saved', reqs.length, 'requests to Supabase');
+      } else {
+        console.warn('Supabase save returned:', res.status, await res.text());
+        _cloudOk = false;
+        showToast('Could not save to database.', 'error');
+      }
+    } catch (e) {
+      console.warn('Supabase save failed:', e);
+      _cloudOk = false;
+      showToast('Could not connect to database.', 'error');
+    }
+  }
+
+  // ── Storage (shared-aware) ──
+  function getRequests() {
+    if (_cache.length > 0) return [..._cache];
+    try { return JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveRequests(reqs) { saveToCloud(reqs); }
+
+  // ── Toast ──
+  function showToast(msg, type = '') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast ' + type;
+    setTimeout(() => t.classList.add('show'), 10);
+    setTimeout(() => t.classList.remove('show'), 4000);
+  }
+
+  // ── Tab switching (refresh from cloud on each switch) ──
+  async function switchTab(name) {
+    // Only admins can view the Manage panel
+    if (name === 'admin' && !isAdmin()) {
+      name = 'book';
+    }
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    document.querySelectorAll('.nav-tab')[['book','requests','admin'].indexOf(name)].classList.add('active');
+    if (name === 'requests' || name === 'admin') await loadFromCloud();
+    if (name === 'requests') renderMyRequests();
+    if (name === 'admin') renderAdmin();
+    updateBadges();
+  }
+
+  // ── Badge counts ──
+  function updateBadges() {
+    const reqs = getRequests();
+    const myName = currentUser ? currentUser.name.toLowerCase().trim() : '';
+    const myReqs = reqs.filter(r => r.sellerName && r.sellerName.toLowerCase().trim() === myName);
+    const pending = reqs.filter(r => r.status === 'pending').length;
+    document.getElementById('myBadge').textContent = myReqs.length;
+    document.getElementById('adminBadge').textContent = pending;
+  }
+
+  // ── Render My Requests (filtered to current user) ──
+  function renderMyRequests() {
+    const list = document.getElementById('myRequestsList');
+    const myName = currentUser ? currentUser.name.toLowerCase().trim() : '';
+    const reqs = getRequests()
+      .filter(r => r.sellerName && r.sellerName.toLowerCase().trim() === myName)
+      .sort((a, b) => b.timestamp - a.timestamp);
+
+    if (reqs.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><p>No requests yet. Submit one from the Book a Call tab.</p></div>`;
+      return;
+    }
+
+    list.innerHTML = reqs.map(r => {
+      const itemClass = r.status === 'done' ? 'done' : r.status === 'cancelled' ? 'cancelled' : '';
+      const tierClass = tierLetterFromType(r.kickoffType) ? 'tier' + tierLetterFromType(r.kickoffType) : '';
+      const badgeClass = r.status === 'done' ? 'scheduled' : r.status === 'cancelled' ? 'cancelled' : 'pending';
+      const badgeLabel = r.status === 'done' ? 'Scheduled' : r.status === 'cancelled' ? 'Cancelled' : 'Pending';
+      return `
+        <div class="request-item ${itemClass} ${tierClass}">
+          <div class="request-meta">
+            <h4>${r.partnerName}</h4>
+            <p><strong>Studio Tier:</strong> ${tierBadgeHtml(r.kickoffType)}</p>
+            <p><strong>Days:</strong> ${r.days.join(', ')} &nbsp;·&nbsp; ${r.timeStart} – ${r.timeEnd} (${r.partnerTz})</p>
+            ${r.onboarder ? '<p style="margin-top: 4px;"><strong>Booked with:</strong> ' + (ONBOARDERS[r.onboarder] ? ONBOARDERS[r.onboarder].full : r.onboarder) + '</p>' : ''}
+            ${r.callDate ? '<p style="margin-top: 4px;"><strong>📅 Call:</strong> ' + r.callDate + '</p>' : ''}
+            ${r.status === 'cancelled' && r.cancelledAt ? '<p style="margin-top: 4px;"><strong>🚫 Cancelled:</strong> ' + new Date(r.cancelledAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + (r.cancelReason ? ' — ' + escapeHtml(r.cancelReason) : '') + '</p>' : ''}
+            <p style="font-size: 0.78rem; color: var(--gray-300); margin-top: 4px;">
+              Submitted ${new Date(r.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
+            </p>
+          </div>
+          <div class="request-actions">
+            <span class="status-badge ${badgeClass}">${badgeLabel}</span>
+            <span class="checklist-email-slot" data-req-id="${r.id}"></span>
+            ${r.status === 'pending' ? '<button type="button" class="btn btn-outline btn-sm" onclick="openEditModal(\'' + r.id + '\')">Edit</button>' : ''}
+          </div>
+        </div>
+      `;}).join('');
+  }
+
+  // ── Admin internal notes (e.g. "Checked with Elle — waiting on her reply") ──
+  function renderAdminNoteSection(r) {
+    if (_editingNoteId === r.id) {
+      return `
+        <div class="admin-note-editor">
+          <textarea id="noteInput-${r.id}" placeholder="e.g. Checked with Elle on availability — waiting on her response.">${escapeHtml(r.adminNote || '')}</textarea>
+          <div class="admin-note-editor-actions">
+            <button type="button" class="btn btn-done btn-sm" onclick="saveAdminNote('${r.id}')">Save note</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="cancelAdminNote()">Cancel</button>
+          </div>
+        </div>`;
+    }
+    if (r.adminNote) {
+      const updated = r.adminNoteUpdatedAt
+        ? '<div class="admin-note-updated">Updated ' + new Date(r.adminNoteUpdatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + '</div>'
+        : '';
+      return `
+        <div class="admin-note-block">
+          <div class="admin-note-label"><span>🗒️ Internal Note</span><button type="button" onclick="openNoteEditor('${r.id}')">Edit</button></div>
+          <div class="admin-note-text">${escapeHtml(r.adminNote)}</div>
+          ${updated}
+        </div>`;
+    }
+    return `<button type="button" class="btn-add-note" onclick="openNoteEditor('${r.id}')">🗒️ + Add internal note</button>`;
+  }
+
+  function openNoteEditor(id) {
+    _editingNoteId = id;
+    renderAdmin();
+    setTimeout(() => {
+      const ta = document.getElementById('noteInput-' + id);
+      if (ta) { ta.focus(); ta.selectionStart = ta.selectionEnd = ta.value.length; }
+    }, 0);
+  }
+
+  function cancelAdminNote() {
+    _editingNoteId = null;
+    renderAdmin();
+  }
+
+  function saveAdminNote(id) {
+    const ta = document.getElementById('noteInput-' + id);
+    const value = ta ? ta.value.trim() : '';
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === id);
+    if (r) {
+      r.adminNote = value;
+      r.adminNoteUpdatedAt = Date.now();
+      saveRequests(reqs);
+    }
+    _editingNoteId = null;
+    renderAdmin();
+    showToast(value ? 'Note saved' : 'Note cleared', 'success');
+  }
+
+  // ── Render Admin ──
+  function renderAdmin() {
+    const list = document.getElementById('adminRequestsList');
+    let reqs = getRequests().sort((a, b) => b.timestamp - a.timestamp);
+
+    if (adminFilter === 'pending') reqs = reqs.filter(r => r.status === 'pending');
+    if (adminFilter === 'done') reqs = reqs.filter(r => r.status === 'done');
+    if (adminFilter === 'cancelled') reqs = reqs.filter(r => r.status === 'cancelled');
+
+    // Update filter button styles
+    ['All', 'Pending', 'Done', 'Cancelled'].forEach(f => {
+      const btn = document.getElementById('filter' + f);
+      if (f.toLowerCase() === adminFilter) {
+        btn.style.borderColor = 'var(--black)';
+        btn.style.background = 'var(--black)';
+        btn.style.color = 'var(--white)';
+      } else {
+        btn.style.borderColor = 'var(--gray-200)';
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--dark)';
+      }
+    });
+
+    if (reqs.length === 0) {
+      const emptyIcon = adminFilter === 'done' ? '✅' : adminFilter === 'cancelled' ? '🚫' : '📭';
+      const emptyMsg = adminFilter === 'done' ? 'No completed requests yet.'
+        : adminFilter === 'pending' ? 'No pending requests!'
+        : adminFilter === 'cancelled' ? 'No cancelled requests.'
+        : 'No requests yet.';
+      list.innerHTML = `<div class="empty-state"><div class="empty-icon">${emptyIcon}</div><p>${emptyMsg}</p></div>`;
+      return;
+    }
+
+    list.innerHTML = reqs.map(r => {
+      const itemClass = r.status === 'done' ? 'done' : r.status === 'cancelled' ? 'cancelled' : '';
+      const tierClass = tierLetterFromType(r.kickoffType) ? 'tier' + tierLetterFromType(r.kickoffType) : '';
+      const badgeClass = r.status === 'done' ? 'scheduled' : r.status === 'cancelled' ? 'cancelled' : 'pending';
+      const badgeLabel = r.status === 'done' ? (r.onboarder ? 'Booked w/ ' + r.onboarder : 'Scheduled')
+        : r.status === 'cancelled' ? 'Cancelled'
+        : 'Pending';
+      let actionButtons = '';
+      const emailSlotHtml = '<span class="checklist-email-slot" data-req-id="' + r.id + '"></span>';
+      const editBtnHtml = '<button type="button" class="btn btn-outline btn-sm" onclick="openEditModal(\'' + r.id + '\')">Edit</button>';
+      if (r.status === 'pending') {
+        actionButtons =
+          '<button class="btn btn-done btn-sm" onclick="openScheduleModal(\'' + r.id + '\')">Mark Scheduled</button>' +
+          emailSlotHtml +
+          '<div class="request-actions-row">' + editBtnHtml + '<button class="btn btn-cancel btn-sm" onclick="cancelRequest(\'' + r.id + '\')">Cancel</button></div>';
+      } else if (r.status === 'cancelled') {
+        actionButtons =
+          '<div class="request-actions-row">' + editBtnHtml + '<button class="btn btn-outline btn-sm" onclick="markPending(\'' + r.id + '\')">Restore</button></div>';
+      } else {
+        actionButtons =
+          emailSlotHtml +
+          '<div class="request-actions-row">' + editBtnHtml + '<button class="btn btn-outline btn-sm" onclick="markPending(\'' + r.id + '\')">Undo</button></div>';
+      }
+      return `
+        <div class="request-item ${itemClass} ${tierClass}">
+          <div class="request-meta">
+            <h4>${r.partnerName}</h4>
+            <p><strong>Seller:</strong> ${r.sellerName} &nbsp;·&nbsp; <strong>Tier:</strong> ${tierBadgeHtml(r.kickoffType)}</p>
+            ${r.platform ? '<p><strong>Transferring from:</strong> ' + escapeHtml(r.platform) + '</p>' : ''}
+            ${r.partnerEmail ? '<p><strong>Partner Email:</strong> ' + escapeHtml(r.partnerEmail) + '</p>' : ''}
+            <p><strong>Deal:</strong> ${r.hubspotDeal ? (r.hubspotDeal.startsWith('http') ? '<a href="' + r.hubspotDeal + '" target="_blank" style="color: var(--black);">' + r.hubspotDeal + '</a>' : r.hubspotDeal) : 'Not provided'}</p>
+            <p><strong>Days:</strong> ${r.days.join(', ')} &nbsp;·&nbsp; ${r.timeStart} – ${r.timeEnd} (${r.partnerTz})</p>
+            ${r.notes ? '<p><strong>Notes:</strong> ' + r.notes + '</p>' : ''}
+            ${r.callDate ? '<p style="margin-top: 4px;"><strong>📅 Call:</strong> ' + r.callDate + '</p>' : ''}
+            ${r.status === 'cancelled' && r.cancelledAt ? '<p style="margin-top: 4px;"><strong>🚫 Cancelled:</strong> ' + new Date(r.cancelledAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + (r.cancelReason ? ' — ' + escapeHtml(r.cancelReason) : '') + '</p>' : ''}
+            <p style="font-size: 0.78rem; color: var(--gray-300); margin-top: 4px;">
+              Submitted ${new Date(r.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
+            </p>
+            ${renderAdminNoteSection(r)}
+          </div>
+          <div class="request-actions">
+            <span class="status-badge ${badgeClass}">${badgeLabel}</span>
+            ${actionButtons}
+          </div>
+        </div>
+      `;}).join('');
+  }
+
+  function filterAdmin(f) { adminFilter = f; renderAdmin(); }
+
+  // ── Modal logic ──
+  function openScheduleModal(id) {
+    pendingScheduleId = id;
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === id);
+    if (r) document.getElementById('modalPartner').textContent = r.partnerName;
+    document.getElementById('onboarderSelect').value = '';
+    document.getElementById('callDate').value = '';
+    document.getElementById('callTime').value = '';
+    document.getElementById('callTimeZone').value = '';
+    document.getElementById('notifySlackSchedule').checked = true;
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    pendingScheduleId = null;
+  }
+
+  function confirmSchedule() {
+    const onboarder = document.getElementById('onboarderSelect').value;
+    const callDate = document.getElementById('callDate').value;
+    const callTime = document.getElementById('callTime').value;
+    const callTimeZone = document.getElementById('callTimeZone').value;
+    if (!onboarder) { showToast('Please select an onboarder', 'error'); return; }
+    if (!callDate) { showToast('Please select the call date', 'error'); return; }
+    if (!callTime) { showToast('Please select the call time', 'error'); return; }
+    if (!callTimeZone) { showToast('Please select a time zone', 'error'); return; }
+
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === pendingScheduleId);
+    if (!r) { closeModal(); return; }
+
+    // Format the date nicely (callDate is yyyy-mm-dd; callTime is already a friendly "h:mm AM/PM" label)
+    const dt = new Date(callDate + 'T00:00:00');
+    const callDateFormatted = dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+      + ' at ' + callTime + ' ' + callTimeZone;
+
+    r.status = 'done';
+    r.onboarder = onboarder;
+    r.callDate = callDateFormatted;
+    r.callDateTime = callDate + ' ' + callTime;
+    r.callTimeZone = callTimeZone;
+    saveRequests(reqs);
+
+    const ob = ONBOARDERS[onboarder];
+    const obName = ob ? ob.full : onboarder;
+
+    // Build Slack confirmation message (tag both seller and onboarder)
+    const obTag = ob ? `<@${ob.slackId}>` : obName;
+    const sellerSlackId = r.sellerSlackId || getSellerSlackId(r.sellerName);
+    const sellerTag = sellerSlackId ? `<@${sellerSlackId}>` : r.sellerName;
+
+    // Carry the HubSpot link through from the original request, formatted as
+    // a clickable Slack link if it's a URL.
+    const hubspotForSlack = r.hubspotDeal
+      ? (/^https?:\/\//i.test(r.hubspotDeal)
+          ? `<${r.hubspotDeal}|View in HubSpot>`
+          : r.hubspotDeal)
+      : null;
+    const hubspotLineSlack = hubspotForSlack
+      ? `🔗 *HubSpot Link:* ${hubspotForSlack}\n\n`
+      : '';
+    const hubspotLinePlain = r.hubspotDeal
+      ? `🔗 HubSpot Link: ${r.hubspotDeal}\n\n`
+      : '';
+
+    const slackText =
+      `✅ *Kickoff Scheduled!*\n\n` +
+      `${sellerTag} — your partner *${r.partnerName}* has been booked with ${obTag}\n` +
+      `📅 *${callDateFormatted}*\n\n` +
+      hubspotLineSlack +
+      `${obTag} — please:\n` +
+      `• Find the onboarding deal in HubSpot and assign it to yourself\n` +
+      `• Schedule the kickoff call\n` +
+      `• Send the welcome email to the partner\n\n🎉`;
+
+    const plainText =
+      `✅ Kickoff Scheduled!\n\n` +
+      `${r.sellerName} — your partner ${r.partnerName} has been booked with ${obName}\n` +
+      `📅 ${callDateFormatted}\n\n` +
+      hubspotLinePlain +
+      `${obName} — please:\n` +
+      `• Find the onboarding deal in HubSpot and assign it to yourself\n` +
+      `• Schedule the kickoff call\n` +
+      `• Send the welcome email to the partner\n\n🎉`;
+
+    const notifySlack = document.getElementById('notifySlackSchedule').checked;
+    if (notifySlack) {
+      sendToSlack(slackText).then(() => {
+        showToast(`Scheduled with ${obName} — notification sent!`, 'success');
+      }).catch(() => {
+        showToast(`Scheduled with ${obName}`, 'success');
+      });
+    } else {
+      showToast(`Scheduled with ${obName} (no Slack notification sent)`, 'success');
+    }
+
+    closeModal();
+    renderAdmin();
+    updateBadges();
+  }
+
+  // ── Edit modal ──
+  let pendingEditId = null;
+
+  function openEditModal(id) {
+    pendingEditId = id;
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === id);
+    if (!r) return;
+    document.getElementById('editModalPartner').textContent = r.partnerName || 'this request';
+    document.getElementById('editSellerName').value = r.sellerName || '';
+    document.getElementById('editPartnerName').value = r.partnerName || '';
+    document.getElementById('editHubspotDeal').value = r.hubspotDeal || '';
+    document.getElementById('editPartnerTz').value = r.partnerTz || '';
+    document.getElementById('editTier').value = tierLetterFromType(r.kickoffType) || '';
+    const dayIds = ['ed1', 'ed2', 'ed3', 'ed4', 'ed5'];
+    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    dayIds.forEach((cid, i) => {
+      const cb = document.getElementById(cid);
+      if (cb) cb.checked = (r.days || []).includes(dayNames[i]);
+    });
+    document.getElementById('editTimeStart').value = r.timeStart || '';
+    document.getElementById('editTimeEnd').value = r.timeEnd || '';
+    document.getElementById('editNotes').value = r.notes || '';
+    document.getElementById('editModalOverlay').classList.add('open');
+  }
+
+  function closeEditModal() {
+    document.getElementById('editModalOverlay').classList.remove('open');
+    pendingEditId = null;
+  }
+
+  function confirmEdit() {
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === pendingEditId);
+    if (!r) { closeEditModal(); return; }
+
+    const sellerName = document.getElementById('editSellerName').value.trim();
+    const partnerName = document.getElementById('editPartnerName').value.trim();
+    const hubspotDeal = document.getElementById('editHubspotDeal').value.trim();
+    const partnerTz = document.getElementById('editPartnerTz').value;
+    const tier = document.getElementById('editTier').value;
+    const dayIds = ['ed1', 'ed2', 'ed3', 'ed4', 'ed5'];
+    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const days = dayNames.filter((name, i) => {
+      const cb = document.getElementById(dayIds[i]);
+      return cb && cb.checked;
+    });
+    const timeStart = document.getElementById('editTimeStart').value;
+    const timeEnd = document.getElementById('editTimeEnd').value;
+    const notes = document.getElementById('editNotes').value.trim();
+
+    if (!sellerName) { showToast('Seller name is required', 'error'); return; }
+    if (!partnerName) { showToast('Partner name is required', 'error'); return; }
+    if (!partnerTz) { showToast('Please select the partner time zone', 'error'); return; }
+    if (days.length === 0) { showToast('Please select at least one preferred day', 'error'); return; }
+    if (!timeStart) { showToast('Please select the earliest time', 'error'); return; }
+    if (!timeEnd) { showToast('Please select the latest time', 'error'); return; }
+
+    const dealChanged = (r.hubspotDeal || '') !== hubspotDeal;
+
+    r.sellerName = sellerName;
+    r.sellerSlackId = getSellerSlackId(sellerName) || r.sellerSlackId || null;
+    r.partnerName = partnerName;
+    r.hubspotDeal = hubspotDeal;
+    r.partnerTz = partnerTz;
+    if (tier && TIER_META[tier]) {
+      r.kickoffType = TIER_META[tier].label;
+    }
+    r.days = days;
+    r.timeStart = timeStart;
+    r.timeEnd = timeEnd;
+    r.notes = notes;
+
+    // A changed HubSpot link means any previously cached checklist link /
+    // contact email is stale — clear it so "Get Email Template" looks it up
+    // fresh next time instead of showing outdated data.
+    if (dealChanged) {
+      r.checklistLink = null;
+      r.contactEmail = null;
+    }
+
+    saveRequests(reqs);
+    closeEditModal();
+    showToast('Request updated', 'success');
+    renderMyRequests();
+    renderAdmin();
+    updateBadges();
+  }
+
+  function markPending(id) {
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === id);
+    if (r) {
+      r.status = 'pending';
+      r.onboarder = null;
+      r.callDate = null;
+      r.callDateTime = null;
+      r.callTimeZone = null;
+      r.cancelledAt = null;
+      saveRequests(reqs);
+    }
+    renderAdmin();
+    updateBadges();
+  }
+
+  let pendingCancelId = null;
+
+  // Cancelling opens a modal so an (optional) reason can be captured and
+  // sent to the seller in Slack — mirrors the "Mark as Scheduled" flow.
+  function cancelRequest(id) {
+    pendingCancelId = id;
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === id);
+    document.getElementById('cancelModalPartner').textContent = r ? r.partnerName : 'this request';
+    document.getElementById('cancelReason').value = '';
+    document.getElementById('notifySlackCancel').checked = true;
+    document.getElementById('cancelModalOverlay').classList.add('open');
+  }
+
+  function closeCancelModal() {
+    document.getElementById('cancelModalOverlay').classList.remove('open');
+    pendingCancelId = null;
+  }
+
+  function confirmCancel() {
+    const reason = document.getElementById('cancelReason').value.trim();
+    const reqs = getRequests();
+    const r = reqs.find(x => x.id === pendingCancelId);
+    if (!r) { closeCancelModal(); return; }
+
+    r.status = 'cancelled';
+    r.cancelledAt = Date.now();
+    r.cancelReason = reason || null;
+    saveRequests(reqs);
+
+    const sellerSlackId = r.sellerSlackId || getSellerSlackId(r.sellerName);
+    const sellerTag = sellerSlackId ? `<@${sellerSlackId}>` : r.sellerName;
+
+    const slackText =
+      `🚫 *Kickoff Request Cancelled*\n\n` +
+      `${sellerTag} — your kickoff request for *${r.partnerName}* has been cancelled.\n` +
+      (reason ? `*Reason:* ${reason}\n` : '') +
+      `\nQuestions? Reach out to <@${SCOTT_USER_ID}>.`;
+
+    const notifySlack = document.getElementById('notifySlackCancel').checked;
+    if (notifySlack) {
+      sendToSlack(slackText).then(() => {
+        showToast('Request cancelled — seller notified in Slack', 'success');
+      }).catch(() => {
+        showToast('Request cancelled', 'success');
+      });
+    } else {
+      showToast('Request cancelled (no Slack notification sent)', 'success');
+    }
+
+    closeCancelModal();
+    renderAdmin();
+    updateBadges();
+  }
+
+  // ── Form submit ──
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+
+    const sellerName = document.getElementById('sellerName').value.trim();
+    const partnerName = document.getElementById('partnerName').value.trim();
+    const partnerEmail = ''; // field removed from the form; kept as '' for backward-compat with saved requests
+    const hubspotDeal = document.getElementById('hubspotDeal').value.trim();
+    const partnerTz = document.getElementById('partnerTz').value;
+    const days = [...document.querySelectorAll('input[name="days"]:checked')].map(d => d.value);
+    const timeStart = document.getElementById('timeStart').value;
+    const timeEnd = document.getElementById('timeEnd').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    if (!resolvedTier) { showToast('Please pick a platform (or "not migrating any data") in Step 1 above', 'error'); return; }
+    if (days.length === 0) { showToast('Please select at least one preferred day', 'error'); return; }
+
+    const kickoffTypeValue = TIER_META[resolvedTier].label;
+
+    // Resolve slack_id for the seller at submit time (from the synced team list).
+    // Saving it on the request makes admin notifications reliable even if the
+    // seller later leaves a channel and drops out of team_members.
+    const sellerSlackId = getSellerSlackId(sellerName);
+
+    btn.disabled = true;
+    btnText.innerHTML = '<span class="spinner"></span> Submitting...';
+
+    // If a HubSpot deal link was given, look up its Studio Checklist Link +
+    // contact email now (in case the seller never blurred the field) so the
+    // self-start email always has the most current data before it's built.
+    if (hubspotDeal) {
+      btnText.innerHTML = '<span class="spinner"></span> Looking up checklist...';
+      await lookupHubspotChecklist(hubspotDeal);
+      btnText.innerHTML = '<span class="spinner"></span> Submitting...';
+    }
+
+    // Save to localStorage
+    const request = {
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+      sellerName, sellerSlackId,
+      partnerName, partnerEmail, hubspotDeal, partnerTz,
+      checklistLink: dealChecklistLink,
+      contactEmail: dealContactEmail,
+      kickoffType: kickoffTypeValue,
+      platform: resolvedPlatform,
+      days, timeStart, timeEnd, notes,
+      status: 'pending',
+      timestamp: Date.now()
+    };
+    const reqs = getRequests();
+    reqs.push(request);
+    saveRequests(reqs);
+    updateBadges();
+
+    // Format the HubSpot link as a clickable Slack link if it's a URL (optional field)
+    const hubspotDealForSlack = hubspotDeal
+      ? (/^https?:\/\//i.test(hubspotDeal) ? `<${hubspotDeal}|View in HubSpot>` : hubspotDeal)
+      : '';
+
+    // Build Slack message
+    const slackText =
+      `📅 *New Kickoff Time Request* — <@${SCOTT_USER_ID}>\n\n` +
+      `*Seller:* ${sellerName}\n` +
+      `*Partner:* ${partnerName}\n` +
+      (hubspotDealForSlack ? `*HubSpot Link:* ${hubspotDealForSlack}\n` : '') +
+      `*Studio Tier:* ${kickoffTypeValue}\n` +
+      `*Partner Time Zone:* ${partnerTz}\n` +
+      `*Preferred Days:* ${days.join(', ')}\n` +
+      `*Preferred Window:* ${timeStart} – ${timeEnd} (partner local)\n` +
+      (notes ? `*Notes:* ${notes}\n` : '') +
+      `\n✅ React with :white_check_mark: when scheduled.`;
+
+    sendToSlack(slackText).then(() => {
+      showToast('Request submitted — Scott has been notified in Slack.', 'success');
+      document.getElementById('requestForm').reset();
+      resetKickoffFlow();
+      openEmailDraftModal(request);
+    }).catch(() => {
+      showToast('Request saved!', 'success');
+      document.getElementById('requestForm').reset();
+      resetKickoffFlow();
+      openEmailDraftModal(request);
+    }).finally(() => { btn.disabled = false; btnText.textContent = 'Submit Request'; });
+  }
+
+  // ── Login / Logout ──
+  function handleLogin(e) {
+    e.preventDefault();
+    const name = document.getElementById('loginName').value.trim();
+    const email = document.getElementById('loginEmail').value.trim();
+    if (!name || !email) return;
+    // If the name matches a Slack team member, capture their slack_id for tagging
+    const match = _teamMembers.find(m => (m.name || '').trim() === name);
+    currentUser = {
+      name,
+      email,
+      slackId: match ? match.slack_id : (SELLERS[name] || null)
+    };
+    storeUser(currentUser);
+    document.getElementById('loginOverlay').style.display = 'none';
+    initUI();
+  }
+
+  // When a user picks (or types) a matching name, auto-fill their email
+  function wireLoginAutofill() {
+    const nameInput = document.getElementById('loginName');
+    const emailInput = document.getElementById('loginEmail');
+    if (!nameInput || !emailInput) return;
+    nameInput.addEventListener('input', () => {
+      const typed = nameInput.value.trim();
+      const match = _teamMembers.find(m => (m.name || '').trim() === typed);
+      if (match && match.email && !emailInput.value) {
+        emailInput.value = match.email;
+      }
+    });
+  }
+
+  function logoutUser() {
+    localStorage.removeItem(ADMIN_KEY);
+    currentUser = null;
+    location.reload();
+  }
+
+  async function initUI() {
+    // Show user pill
+    document.getElementById('userPillName').textContent = currentUser.name;
+    document.getElementById('userPill').classList.remove('hidden');
+
+    // Auto-fill seller name in form
+    document.getElementById('sellerName').value = currentUser.name;
+
+    // Everyone sees "My Requests" (filtered to their own submissions).
+    // Only Scott + Maggie see the "Manage" tab.
+    const adminTab = document.getElementById('adminTab');
+    if (isAdmin()) {
+      adminTab.classList.remove('hidden');
+    } else {
+      adminTab.classList.add('hidden');
+    }
+
+    // Initialize shared cloud storage + team member autocomplete
+    await Promise.all([initSharedStorage(), loadTeamMembers()]);
+    updateBadges();
+
+    // Auto-open admin tab if ?admin is in URL and user is admin
+    if (window.location.search.includes('admin') && isAdmin()) switchTab('admin');
+  }
+
+  // ── Init ──
+  renderTierList('');
+  currentUser = getStoredUser();
+  if (currentUser) {
+    document.getElementById('loginOverlay').style.display = 'none';
+    initUI();
+  } else {
+    // Load team members FIRST so the login popup's autocomplete is populated
+    // before the user starts typing. Wire the name→email autofill either way.
+    wireLoginAutofill();
+    loadTeamMembers().finally(() => {
+      document.getElementById('loginOverlay').style.display = 'flex';
+    });
+  }
+
+</script>
+
+<style>
+.btn-checklist-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  color: var(--amethyst);
+  border: 1.5px solid var(--amethyst);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-checklist-email:hover { background: var(--amethyst-light); }
+.btn-checklist-email:disabled { opacity: 0.6; cursor: not-allowed; }
+#checklistEmailModalOverlay .modal {
+  width: 640px;
+}
+#checklistEmailModalBody .checklist-email-body,
+.checklist-email-body.checklist-email-body {
+  width: 100% !important;
+  height: 440px !important;
+  min-height: 440px !important;
+  padding: 12px 13px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  line-height: 1.6;
+  resize: vertical;
+}
+.checklist-email-missing {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  background: var(--gray-100);
+  border-radius: 10px;
+  padding: 14px 16px;
+  line-height: 1.5;
+}
+</style>
+
+<div class="modal-overlay" id="checklistEmailModalOverlay" onclick="if(event.target===this) window.__closeChecklistEmailModal()">
+<div class="modal modal-wide">
+<h3>📋 Partner Checklist Email</h3>
+<p class="modal-sub" id="checklistEmailModalSub">Ready-to-send follow-up.</p>
+<div id="checklistEmailModalBody"></div>
+<div class="modal-actions" style="justify-content:flex-start; flex-wrap:wrap;" id="checklistEmailModalActions"></div>
+</div>
+</div>
+
+<script>
+
+(function () {
+  // Guard: only run if the globals we depend on actually exist. If the
+  // original app's internals ever change shape, fail quiet rather than
+  // throwing on top of a working production app.
+  if (typeof renderMyRequests !== 'function' || typeof getRequests !== 'function') {
+    console.warn('[checklist-email-feature] Required globals not found — feature disabled.');
+    return;
+  }
+
+  function safeText(str) {
+    return (typeof escapeHtml === 'function')
+      ? escapeHtml(str)
+      : String(str == null ? '' : str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // Recreate the exact same filter + sort renderMyRequests() uses internally,
+  // so index i in this array lines up 1:1 with the i-th ".request-item" card
+  // the original renderer just drew into #myRequestsList.
+  function getMyRequestsInRenderOrder() {
+    const myName = (typeof currentUser !== 'undefined' && currentUser) ? currentUser.name.toLowerCase().trim() : '';
+    return getRequests()
+      .filter(function (r) { return r.sellerName && r.sellerName.toLowerCase().trim() === myName; })
+      .sort(function (a, b) { return b.timestamp - a.timestamp; });
+  }
+
+  function hasUsableDeal(r) {
+    return !!(r && r.hubspotDeal && String(r.hubspotDeal).trim() && r.status !== 'cancelled');
+  }
+
+  function firstName(name) {
+    return (name || 'the Arketa team').split(' ')[0];
+  }
+
+  function buildChecklistEmail(r, checklistLink, contactEmail) {
+    const partner = r.partnerName || 'there';
+    const seller = firstName(r.sellerName);
+    const callPart = r.callDate ? (' — we’ve got your kickoff call down for ' + r.callDate) : '';
+    const emailHint = contactEmail ? (' (' + contactEmail + ')') : '';
+    const body =
+`Hi ${partner} team,
+
+Thanks so much for getting started with Arketa${callPart}!
+
+Here's the link to your Studio Onboarding Checklist so you can jump in whenever you're ready:
+${checklistLink}
+
+It's completely passwordless — just open the link, enter your email${emailHint}, and you're in instantly. No account or password to set up.
+
+Getting a head start on the checklist means we can move even faster together.
+
+Talk soon,
+${seller}`;
+    return body;
+  }
+
+  function openModal() {
+    document.getElementById('checklistEmailModalOverlay').classList.add('open');
+  }
+  window.__closeChecklistEmailModal = function () {
+    document.getElementById('checklistEmailModalOverlay').classList.remove('open');
+  };
+
+  function renderMissing(partnerName) {
+    document.getElementById('checklistEmailModalSub').textContent =
+      'No checklist link found yet for ' + (partnerName || 'this partner') + '.';
+    document.getElementById('checklistEmailModalBody').innerHTML =
+      '<div class="checklist-email-missing">No checklist link found yet for this studio. Check the HubSpot deal or create the studio checklist first.</div>';
+    document.getElementById('checklistEmailModalActions').innerHTML =
+      '<button type="button" class="btn btn-outline btn-sm" onclick="window.__closeChecklistEmailModal()">Close</button>';
+    openModal();
+  }
+
+  function renderTemplate(r, checklistLink, contactEmail) {
+    const body = buildChecklistEmail(r, checklistLink, contactEmail);
+    document.getElementById('checklistEmailModalSub').innerHTML =
+      'Ready-to-send follow-up for <strong>' + safeText(r.partnerName || 'your partner') + '</strong>.';
+    document.getElementById('checklistEmailModalBody').innerHTML =
+      '<div class="form-group"><textarea class="checklist-email-body" id="checklistEmailBody" readonly></textarea></div>';
+    document.getElementById('checklistEmailBody').value = body;
+    document.getElementById('checklistEmailModalActions').innerHTML =
+      '<button type="button" class="btn btn-primary btn-sm" id="checklistEmailCopyBtn">Copy</button>' +
+      '<button type="button" class="btn btn-outline btn-sm" onclick="window.__closeChecklistEmailModal()">Done</button>';
+    document.getElementById('checklistEmailCopyBtn').onclick = function () {
+      const ta = document.getElementById('checklistEmailBody');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ta.value).then(function () {
+          if (typeof showToast === 'function') showToast('Email copied — paste it into your email client', 'success');
+        }).catch(function () {
+          ta.select();
+          if (typeof showToast === 'function') showToast('Could not copy — text is selected, use Cmd/Ctrl+C', 'error');
+        });
+      } else {
+        ta.select();
+        if (typeof showToast === 'function') showToast('Could not copy — text is selected, use Cmd/Ctrl+C', 'error');
+      }
+    };
+    openModal();
+  }
+
+  async function handleGetEmailTemplate(reqId, btn) {
+    const list = getRequests();
+    const r = list.find(function (x) { return x.id === reqId; });
+    if (!r) return;
+
+    const origLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Loading…';
+
+    let checklistLink = null;
+    let contactEmail = null;
+    try {
+      const res = await fetch('/api/checklist?dealUrl=' + encodeURIComponent(r.hubspotDeal));
+      if (res.ok) {
+        const data = await res.json().catch(function () { return {}; });
+        checklistLink = data.checklistLink || null;
+        contactEmail = data.contactEmail || null;
+      }
+    } catch (e) {
+      console.warn('[checklist-email-feature] /api/checklist lookup failed:', e);
+    }
+
+    if (!checklistLink) checklistLink = r.checklistLink || null;
+    if (!contactEmail) contactEmail = r.contactEmail || null;
+
+    btn.disabled = false;
+    btn.textContent = origLabel;
+
+    if (!checklistLink) {
+      renderMissing(r.partnerName);
+      return;
+    }
+    renderTemplate(r, checklistLink, contactEmail);
+  }
+
+  function enhanceMyRequestsCards() {
+    const list = document.getElementById('myRequestsList');
+    if (!list) return;
+    const cards = list.querySelectorAll('.request-item');
+    const records = getMyRequestsInRenderOrder();
+    if (cards.length !== records.length) {
+      // Defensive: counts should always match since we replicate the exact
+      // same filter/sort the original renderer uses internally. If they
+      // ever drift, skip silently rather than mis-wiring buttons to the
+      // wrong cards.
+      console.warn('[checklist-email-feature] card/record count mismatch — skipping this render.');
+      return;
+    }
+    cards.forEach(function (card, i) {
+      const r = records[i];
+      if (!hasUsableDeal(r)) return;
+      const actions = card.querySelector('.request-actions');
+      if (!actions || actions.querySelector('.btn-checklist-email')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn-checklist-email';
+      btn.textContent = 'Get Email Template';
+      btn.onclick = function () { handleGetEmailTemplate(r.id, btn); };
+      const slot = actions.querySelector('.checklist-email-slot[data-req-id="' + r.id + '"]') || actions.querySelector('.checklist-email-slot');
+      if (slot) {
+        slot.appendChild(btn);
+      } else {
+        actions.appendChild(btn);
+      }
+    });
+  }
+
+  const _origRenderMyRequests = window.renderMyRequests;
+  window.renderMyRequests = function () {
+    _origRenderMyRequests.apply(this, arguments);
+    try { enhanceMyRequestsCards(); } catch (e) { console.warn('[checklist-email-feature] enhance failed:', e); }
+  };
+
+  // ── Same feature, but for the admin "Manage Requests" tab ──
+  function getAdminRequestsInRenderOrder() {
+    let reqs = getRequests().sort(function (a, b) { return b.timestamp - a.timestamp; });
+    if (typeof adminFilter !== 'undefined') {
+      if (adminFilter === 'pending') reqs = reqs.filter(function (r) { return r.status === 'pending'; });
+      if (adminFilter === 'done') reqs = reqs.filter(function (r) { return r.status === 'done'; });
+      if (adminFilter === 'cancelled') reqs = reqs.filter(function (r) { return r.status === 'cancelled'; });
+    }
+    return reqs;
+  }
+
+  function enhanceAdminCards() {
+    const list = document.getElementById('adminRequestsList');
+    if (!list) return;
+    const cards = list.querySelectorAll('.request-item');
+    const records = getAdminRequestsInRenderOrder();
+    if (cards.length !== records.length) {
+      console.warn('[checklist-email-feature] admin card/record count mismatch — skipping this render.');
+      return;
+    }
+    cards.forEach(function (card, i) {
+      const r = records[i];
+      if (!hasUsableDeal(r)) return;
+      const actions = card.querySelector('.request-actions');
+      if (!actions || actions.querySelector('.btn-checklist-email')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn-checklist-email';
+      btn.textContent = 'Get Email Template';
+      btn.onclick = function () { handleGetEmailTemplate(r.id, btn); };
+      const slot = actions.querySelector('.checklist-email-slot[data-req-id="' + r.id + '"]') || actions.querySelector('.checklist-email-slot');
+      if (slot) {
+        slot.appendChild(btn);
+      } else {
+        actions.appendChild(btn);
+      }
+    });
+  }
+
+  if (typeof window.renderAdmin === 'function') {
+    const _origRenderAdmin = window.renderAdmin;
+    window.renderAdmin = function () {
+      _origRenderAdmin.apply(this, arguments);
+      try { enhanceAdminCards(); } catch (e) { console.warn('[checklist-email-feature] admin enhance failed:', e); }
+    };
+  } else {
+    console.warn('[checklist-email-feature] renderAdmin not found — Manage tab button disabled.');
+  }
+})();
+
+</script>
+
+</body></html>
